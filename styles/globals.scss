@@ -1,0 +1,26 @@
+@use "reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+body {
+    font-family: "Plus Jakarta Sans", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+p {
+    font-size: 16px;
+}
+h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 1.2;
+}
+.tag {
+    color: vars.$tag__color;
+    text-transform: uppercase;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background: vars.$bg--dark;
+        color: white;
+    }
+}

@@ -1,0 +1,18 @@
+.users__list {
+    max-width: 97dvw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    border-radius: 0 0 20px 20px;
+    border: 1px solid blueviolet;
+    &__card:last-child {
+        margin-bottom: 4em;
+    }
+}
+
+@media (min-width: 768px) {
+    .users__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
