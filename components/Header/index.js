@@ -9,7 +9,9 @@ const Header = () => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.logo}></div>
+            <Link href={"/"}>
+                <div className={styles.logo}></div>
+            </Link>
             {isMobile ? (
                 <HiMenuAlt3 size={30} className="hi" />
             ) : (

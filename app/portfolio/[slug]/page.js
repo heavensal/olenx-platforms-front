@@ -5,17 +5,29 @@ import styles from "@/styles/pages/portfolio.module.scss";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import Modal from "@/components/Modal";
 
 export default function Portfolio() {
     const params = useParams();
     const slug = params.slug;
     const user = userStore((state) => state.users[slug]);
     const [active, setActive] = useState("Tous");
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const options = ["Tous", "Design", "Dev Web"];
 
     const handleClick = (option) => {
         setActive(option);
+    };
+
+    const openModal = (project) => {
+        setIsModalOpen(true);
+        setSelectedProject(project);
+    };
+    const closeModal = (e) => {
+        e.preventDefault();
+        setIsModalOpen(false);
     };
 
     return (
@@ -24,11 +36,16 @@ export default function Portfolio() {
                 <div className={styles.profile__infos}>
                     <div className={styles.profile__text}>
                         <h1 className={styles.profile__name}>{user.name}</h1>
-                        <h2 className={styles.profile__job}>
+                        <ul className={styles.profile__job}>
                             {user.jobs.map((job, index) => (
-                                <p key={index}>{job}</p>
+                                <li
+                                    key={index}
+                                    className={styles.profile__job__item}
+                                >
+                                    {job}
+                                </li>
                             ))}
-                        </h2>
+                        </ul>
                         <p className={styles.profile__catchphrase}>
                             {user.catchprase}
                         </p>
@@ -94,12 +111,18 @@ export default function Portfolio() {
                         <li
                             className={styles.product__list__item}
                             key={project.id}
+                            onClick={() => openModal(project.title)}
                         >
                             <Card card={project} />
                         </li>
                     ))}
                 </ul>
             </section>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                project={user.projects[selectedProject]}
+            />
         </main>
     );
 }

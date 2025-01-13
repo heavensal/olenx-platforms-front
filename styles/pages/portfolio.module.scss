@@ -13,6 +13,7 @@
         display: grid;
         grid-template-columns: 80% 20%;
         margin-bottom: 2em;
+        align-items: center;
     }
     &__text {
         display: flex;
@@ -20,14 +21,19 @@
         flex-direction: column;
         gap: 1em;
     }
+    &__job {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
     &__tags {
-        gap: 2em;
         display: grid;
         grid-template-columns: 50% 50%;
         margin-bottom: 2em;
         justify-content: space-around;
         &__item {
             transition: all 0.4s ease-in-out;
+            margin-bottom: 1em;
             &:hover {
                 color: white;
             }
@@ -40,8 +46,6 @@
 }
 
 .presentation {
-    display: grid;
-    gap: 2em;
     &__description,
     &__logiciels {
         display: flex;
@@ -53,7 +57,7 @@
 .banner {
     position: relative;
     height: 100dvh;
-    width: 100dvw;
+    max-width: 100dvw;
     & img {
         width: 100%;
         height: 100%;
@@ -99,8 +103,18 @@
             display: flex;
             justify-content: space-between;
         }
+        &__job {
+            flex-direction: row;
+        }
         &__text {
             max-width: 100%;
+        }
+    }
+    .project {
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2em;
         }
     }
 }
