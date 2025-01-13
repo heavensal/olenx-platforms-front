@@ -1,0 +1,60 @@
+.footer,
+.footer__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    padding: 4em 1em;
+    gap: 2em;
+    &__text {
+        gap: 2em;
+        justify-content: center;
+        align-items: center;
+    }
+    &__paragraph {
+        font-size: 2em;
+    }
+    &__cta {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        @include mixins.border-radius(24px);
+        padding: 0.75rem 1.5rem;
+        background: vars.$text-white;
+        color: black;
+        width: fit-content;
+        margin-bottom: 3em;
+    }
+    &__signature {
+        color: vars.$tag__color;
+    }
+}
+
+.footer__links {
+    &__title {
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 2em;
+        font-size: 12px;
+    }
+}
+
+.footer__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1em;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 50px;
+        &__text {
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+}

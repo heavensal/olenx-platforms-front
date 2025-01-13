@@ -5,7 +5,6 @@ import styles from "@/styles/pages/home.module.scss";
 
 export default function Home() {
     const cards = cardStore((state) => state.cards);
-    console.log(cards);
 
     return (
         <main className={styles.home}>

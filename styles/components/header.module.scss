@@ -1,0 +1,36 @@
+.header {
+    padding: 25px 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    background: white;
+    height: 30px;
+    width: 30px;
+}
+.menu {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+}
+.cta__container {
+    gap: 1em;
+    display: flex;
+}
+@media (min-width: 768px) {
+    .header {
+        padding: 16px 50px;
+        border: 1px solid green;
+    }
+    .menu {
+        &__list {
+            flex-direction: row;
+        }
+    }
+}

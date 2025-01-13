@@ -7,20 +7,53 @@ body {
 }
 p {
     font-size: 16px;
+    line-height: 1.3em;
 }
+h1,
 h3 {
-    font-size: 24px;
     text-transform: uppercase;
     font-weight: 800;
     line-height: 1.2;
 }
+h1 {
+    font-size: 2.25rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+h3 {
+    font-size: 24px;
+}
 .tag {
     color: vars.$tag__color;
     text-transform: uppercase;
+}
+.cta {
+    @include mixins.border-radius(24px);
+    padding: 0.75rem 1.5rem;
+    background: vars.$text-white;
+    color: vars.$text-black;
+    transition: all 0.4s ease-in-out;
+    border: 1px solid;
+    &:hover {
+        background: transparent;
+        color: vars.$text-white;
+        border: 1px solid vars.$text-white;
+    }
 }
 @media (prefers-color-scheme: dark) {
     body {
         background: vars.$bg--dark;
         color: white;
     }
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4.75rem;
+    }
+}
+
+.active {
+    color: vars.$text-hover !important;
 }
