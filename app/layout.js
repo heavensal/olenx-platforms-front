@@ -1,4 +1,7 @@
 import "@/styles/globals.scss";
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "next-themes";
+import Header from "@/components/Header";
 
 export const metadata = {
     title: "Create Next App",
@@ -7,8 +10,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="fr">
-            <body>{children}</body>
+        <html lang="fr" suppressHydrationWarning>
+            <head>
+                <meta name="apple-mobile-web-app-title" content="Platforms" />
+            </head>
+            <body>
+                {" "}
+                <ThemeProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </ThemeProvider>
+            </body>
         </html>
     );
 }

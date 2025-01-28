@@ -140,3 +140,8 @@ a {
     text-decoration: none; /* Retire le soulignement */
     color: inherit; /* Utilise la couleur du texte environnant */
 }
+
+input {
+    all: unset;
+    box-sizing: border-box; /* Pour gérer les bordures correctement */
+}

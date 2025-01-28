@@ -1,0 +1,494 @@
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_668979._.js", {
+
+"[project]/styles/components/card.module.scss.module.css [app-client] (css module)": ((__turbopack_context__) => {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+__turbopack_export_value__({
+  "card": "card-module-scss-module__3kf2SG__card",
+  "card__image": "card-module-scss-module__3kf2SG__card__image",
+  "card__tag": "card-module-scss-module__3kf2SG__card__tag",
+  "card__text": "card-module-scss-module__3kf2SG__card__text",
+});
+}}),
+"[project]/components/Card/index.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$components$2f$card$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_import__("[project]/styles/components/card.module.scss.module.css [app-client] (css module)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/image.js [app-client] (ecmascript)");
+;
+;
+;
+const Card = ({ card })=>{
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$components$2f$card$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$components$2f$card$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card__image,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                    src: `/images/company/${card.image}`,
+                    width: 500,
+                    height: 300,
+                    quality: 90,
+                    alt: card.title
+                }, void 0, false, {
+                    fileName: "[project]/components/Card/index.js",
+                    lineNumber: 8,
+                    columnNumber: 17
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/components/Card/index.js",
+                lineNumber: 7,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$components$2f$card$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card__text,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$components$2f$card$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card__title,
+                        children: card.title
+                    }, void 0, false, {
+                        fileName: "[project]/components/Card/index.js",
+                        lineNumber: 17,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$components$2f$card$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].card__tag,
+                        children: card.tag
+                    }, void 0, false, {
+                        fileName: "[project]/components/Card/index.js",
+                        lineNumber: 18,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/Card/index.js",
+                lineNumber: 16,
+                columnNumber: 13
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/components/Card/index.js",
+        lineNumber: 6,
+        columnNumber: 9
+    }, this);
+};
+_c = Card;
+const __TURBOPACK__default__export__ = Card;
+var _c;
+__turbopack_refresh__.register(_c, "Card");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/stores/userStore.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$react$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/zustand/esm/react.mjs [app-client] (ecmascript)");
+;
+const users = [
+    {
+        id: 0,
+        name: "Ibrahima BARRY",
+        job: [
+            "Développeur Web Front-End",
+            "Graphiste",
+            "Expert SEO"
+        ],
+        tags: [
+            "Développement Web",
+            "Design",
+            "Rédaction",
+            "Marketing"
+        ],
+        project: [
+            {
+                id: 0,
+                title: "Zooom",
+                subtitle: "media mode",
+                catchphrase: "La mode par (0°0)",
+                tags: [
+                    "Design"
+                ],
+                description: "Lorem20",
+                images: []
+            },
+            {
+                id: 1,
+                title: "Moment",
+                subtitle: "",
+                catchphrase: "La mode par (0°0)",
+                tags: [
+                    "Design"
+                ],
+                description: "Lorem20",
+                images: []
+            }
+        ]
+    },
+    {
+        id: 1,
+        image: "stream-shop.jpg",
+        title: "Stream Shop",
+        tag: "Design"
+    },
+    {
+        id: 2,
+        image: "random-risk.jpg",
+        title: "Random Risk",
+        tag: "Photo"
+    },
+    {
+        id: 3,
+        image: "share-spark.jpg",
+        title: "Share Spark",
+        tag: "Style"
+    },
+    {
+        id: 4,
+        image: "wiggly-finger.jpg",
+        title: "Wiggly Finger",
+        tag: "Creative"
+    },
+    {
+        id: 5,
+        image: "subsequent-sneeze.jpg",
+        title: "Subsequent Sneeze",
+        tag: "Design"
+    },
+    {
+        id: 6,
+        image: "color-current.png",
+        title: "Color Current",
+        tag: "Photo"
+    },
+    {
+        id: 7,
+        image: "justice-robot.jpg",
+        title: "Justice Robot",
+        tag: "Style"
+    },
+    {
+        id: 8,
+        image: "the-dark-side.jpg",
+        title: "The Dark Side",
+        tag: "Creative"
+    }
+];
+const userStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$zustand$2f$esm$2f$react$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["create"])((set)=>({
+        users
+    }));
+const __TURBOPACK__default__export__ = userStore;
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/styles/pages/portfolio.module.scss.module.css [app-client] (css module)": ((__turbopack_context__) => {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+__turbopack_export_value__({
+  "portfolio": "portfolio-module-scss-module__VXYelW__portfolio",
+  "profile": "portfolio-module-scss-module__VXYelW__profile",
+  "profile__catchphrase": "portfolio-module-scss-module__VXYelW__profile__catchphrase",
+  "profile__infos": "portfolio-module-scss-module__VXYelW__profile__infos",
+  "profile__tags": "portfolio-module-scss-module__VXYelW__profile__tags",
+  "profile__tags__item": "portfolio-module-scss-module__VXYelW__profile__tags__item",
+  "profile__text": "portfolio-module-scss-module__VXYelW__profile__text",
+  "project__filter": "portfolio-module-scss-module__VXYelW__project__filter",
+});
+}}),
+"[project]/app/portfolio/[slug]/page.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
+{
+__turbopack_esm__({
+    "default": (()=>Portfolio)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Card$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/components/Card/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$stores$2f$userStore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/stores/userStore.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__ = __turbopack_import__("[project]/styles/pages/portfolio.module.scss.module.css [app-client] (css module)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_refresh__.signature();
+"use client";
+;
+;
+;
+;
+function Portfolio() {
+    _s();
+    const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
+    const slug = params.slug;
+    console.log(slug);
+    const user = (0, __TURBOPACK__imported__module__$5b$project$5d2f$stores$2f$userStore$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])({
+        "Portfolio.userStore[user]": (state)=>state.users.filter(user.id == slug)
+    }["Portfolio.userStore[user]"]);
+    console.log(user);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].portfolio,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__infos,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__text,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__name,
+                                        children: "title"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 19,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__job,
+                                        children: "subtitle"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 20,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__catchphrase,
+                                        children: "catchphrase"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 21,
+                                        columnNumber: 25
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 18,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__code,
+                                children: "QR Code"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 25,
+                                columnNumber: 21
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                        lineNumber: 17,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__tags,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__tags__item,
+                                children: "Services"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 28,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__tags__item,
+                                children: "Industrie"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 29,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__tags__item,
+                                children: "Services"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 30,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].profile__tags__item,
+                                children: "Industrie"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 31,
+                                columnNumber: 21
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                        lineNumber: 27,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/portfolio/[slug]/page.js",
+                lineNumber: 16,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].interlude,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].description,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                children: "Description"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 36,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].description__text,
+                                children: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus sunt expedita sint ducimus unde et, deleniti, iusto aliquid, consequatur consectetur cumque."
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 37,
+                                columnNumber: 21
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                        lineNumber: 35,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].logiciels,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                children: "Logiciels/Technologie"
+                            }, void 0, false, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 44,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].description__text,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        children: "Adobe Photoshop"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 46,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        children: "Adobe Illustrator"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 47,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        children: "NextJS"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 48,
+                                        columnNumber: 25
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        children: "Wordpress"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                                        lineNumber: 49,
+                                        columnNumber: 25
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/portfolio/[slug]/page.js",
+                                lineNumber: 45,
+                                columnNumber: 21
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                        lineNumber: 43,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/portfolio/[slug]/page.js",
+                lineNumber: 34,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].banner
+            }, void 0, false, {
+                fileName: "[project]/app/portfolio/[slug]/page.js",
+                lineNumber: 53,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].project,
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].project__filter,
+                        children: "test"
+                    }, void 0, false, {
+                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                        lineNumber: 55,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].project__list,
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                            className: __TURBOPACK__imported__module__$5b$project$5d2f$styles$2f$pages$2f$portfolio$2e$module$2e$scss$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].product__list__item
+                        }, void 0, false, {
+                            fileName: "[project]/app/portfolio/[slug]/page.js",
+                            lineNumber: 57,
+                            columnNumber: 21
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/app/portfolio/[slug]/page.js",
+                        lineNumber: 56,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/portfolio/[slug]/page.js",
+                lineNumber: 54,
+                columnNumber: 13
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/app/portfolio/[slug]/page.js",
+        lineNumber: 15,
+        columnNumber: 9
+    }, this);
+}
+_s(Portfolio, "+jVsTcECDRo3yq2d7EQxlN9Ixog=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
+    ];
+});
+_c = Portfolio;
+var _c;
+__turbopack_refresh__.register(_c, "Portfolio");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/app/portfolio/[slug]/page.js [app-rsc] (ecmascript, Next.js server component, client modules)": ((__turbopack_context__) => {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
+{
+}}),
+}]);
+
+//# sourceMappingURL=_668979._.js.map
