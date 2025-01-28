@@ -1,14 +1,22 @@
 .profile,
 .presentation,
-.project {
+.project,
+.banner {
     padding: 50px 20px;
 }
 .profile {
     display: grid;
     grid-template-rows: 90% 10%;
     align-items: center;
-
-    border-bottom: 1px solid blue;
+    border-bottom: 2px solid vars.$tag__color;
+    &__code {
+        padding: 1em;
+        background: vars.$bg__transparent;
+        border: 1px solid vars.$tag__color;
+        max-width: fit-content;
+        backdrop-filter: blur(10px);
+        @include mixins.border-radius(24px);
+    }
     &__infos {
         display: grid;
         grid-template-columns: 80% 20%;
@@ -46,6 +54,9 @@
 }
 
 .presentation {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2em;
     &__description,
     &__logiciels {
         display: flex;
@@ -59,6 +70,7 @@
     height: 100dvh;
     max-width: 100dvw;
     & img {
+        @include mixins.border-radius(24px);
         width: 100%;
         height: 100%;
         object-fit: cover; /* l'image remplit tout le conteneur */
@@ -70,6 +82,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     gap: 1em;
     &__item {
         margin-bottom: 1em;
@@ -80,7 +93,7 @@
     &__filter {
         position: sticky;
         margin-bottom: 4em;
-        top: 3dvh;
+        top: 10dvh;
         z-index: 10;
         background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(10px);
@@ -97,17 +110,40 @@
     }
 }
 
+.test__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    overflow: hidden;
+    & img {
+        max-width: 100%;
+        height: 100%;
+    }
+}
+
 @media (min-width: 768px) {
+    .portfolio {
+        width: 80dvw;
+        margin: 0 auto;
+    }
     .profile {
         &__tags {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 2em;
         }
         &__job {
             flex-direction: row;
         }
         &__text {
             max-width: 100%;
+        }
+    }
+    .presentation {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        &__description {
+            padding: 0 2em;
         }
     }
     .project {

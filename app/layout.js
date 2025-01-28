@@ -11,6 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="fr" suppressHydrationWarning>
+            <head>
+                <meta name="apple-mobile-web-app-title" content="Platforms" />
+            </head>
             <body>
                 {" "}
                 <ThemeProvider>

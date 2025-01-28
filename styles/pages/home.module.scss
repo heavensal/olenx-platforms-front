@@ -1,6 +1,5 @@
 .users__list {
     max-width: 97dvw;
-
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -10,10 +9,101 @@
         margin-bottom: 4em;
     }
 }
+.selections {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background: vars.$bg__transparent;
+    position: sticky;
+    top: 9.75dvh;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+}
+.searchbar {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    background: vars.$bg--dark;
+    border: 1px solid vars.$tag__color;
+    @include mixins.border-radius(50px);
+    padding: 0.4em 1em;
+    & input {
+        width: 100%;
+        border: none;
+        background: vars.$bg--dark;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.home {
+    &__filter {
+        width: fit-content;
+        margin: 0 auto;
+        position: sticky;
+        margin-bottom: 1rem;
+        top: 10dvh;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        @include mixins.flex__center;
+        padding: 20px;
+        gap: 1em;
+
+        &__item {
+            color: vars.$tag__color;
+            &:hover {
+                color: vars.$text-hover;
+            }
+        }
+    }
+    &__banner {
+        padding: 50px;
+        @include mixins.flex__center__c;
+        gap: 2em;
+        text-align: center;
+        margin-bottom: 1em;
+        & span {
+            font-size: 16px;
+        }
+        & p {
+            max-width: 80%;
+            font-size: 14px;
+            color: vars.$tag__color;
+        }
+    }
+}
 
 @media (min-width: 768px) {
     .users__list {
         grid-template-columns: repeat(3, 1fr);
         padding: 50px;
+    }
+    .home__banner {
+        padding: 35px;
+        flex-direction: row;
+        justify-content: start;
+        & span {
+            font-size: 16px;
+        }
+        & h1 {
+            font-size: 56px;
+            text-align: left;
+        }
+        & p {
+            max-width: 50%;
+            text-align: right;
+            font-size: 18px;
+            margin-bottom: 2rem;
+        }
+    }
+    .selections {
+        width: 100%;
+        top: 9.5dvh;
     }
 }

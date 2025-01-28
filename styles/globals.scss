@@ -57,3 +57,12 @@ h3 {
 .active {
     color: vars.$text-hover !important;
 }
+
+input {
+    background: vars.$bg__input;
+    border: 1px solid vars.$border__input;
+    padding: 8px 1em;
+    &:focus {
+        background: white;
+    }
+}

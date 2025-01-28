@@ -1,7 +1,7 @@
 .modal {
     padding: 20px;
-    border-radius: 24px;
-    background: blue;
+    border-radius: 0 0 24px 24px;
+    background: vars.$bg--dark;
     &__overlay {
         position: fixed;
         z-index: 100;
@@ -19,7 +19,23 @@
     }
     &__content {
         max-height: 70dvh;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
         overflow-y: scroll;
+        margin-bottom: 4em;
+        & p {
+            padding: 2em 1em;
+        }
+    }
+    &__author {
+        color: vars.$tag__color;
+        cursor: pointer;
+    }
+    &__image {
+        width: 100%;
+        @include mixins.border-radius(24px);
+        height: auto;
     }
 }
 
@@ -30,10 +46,23 @@
     justify-content: space-around;
     max-width: 100%;
     &__photo {
-        background: white;
-        height: 50px;
+        height: 100%;
         width: 50px;
         border-radius: 100px;
+        border: 2px solid vars.$tag__color;
+        overflow: hidden;
+
+        & img {
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
+            max-height: 100%;
+        }
+    }
+    &__infos {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
     }
 }
 
@@ -69,4 +98,11 @@
             object-position: center;
         }
     }
+}
+
+@media (min-width: 768px) {
+    // .modal {
+    //     width: 80dvw;
+    //     margin: 0 auto;
+    // }
 }

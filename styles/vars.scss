@@ -1,5 +1,6 @@
 /**** colors *****/
-$bg--dark: #1c1c1c;
+$bg--dark: #000000;
+$bg__transparent: rgba(0, 0, 0, 0.8);
 $bg__footer--light: #f7f7f7;
 $text-hover: #ef5d39;
 $text-white: #fffafa;
@@ -9,3 +10,7 @@ $text-black: #000000;
 $card__borderRadius: 24px;
 $card__title: $card__borderRadius;
 $tag__color: hsl(0, 0%, 46%);
+$bg__card: #1c1c1e;
+
+$bg__input: #121212;
+$border__input: #333333;

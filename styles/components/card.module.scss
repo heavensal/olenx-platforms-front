@@ -1,6 +1,7 @@
 .card {
     width: 100%;
     margin-bottom: 1em;
+    cursor: pointer;
     &__image {
         overflow: hidden;
         border-radius: 24px;
@@ -12,6 +13,10 @@
 
             object-fit: cover; /* l'image remplit tout le conteneur */
             object-position: center;
+            transition: all 0.4s ease-in-out;
+            &:hover {
+                scale: 1.1;
+            }
         }
     }
     &__text {

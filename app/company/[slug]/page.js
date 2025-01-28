@@ -1,21 +1,25 @@
 "use client";
 import Card from "@/components/Card";
-
 import styles from "@/styles/pages/portfolio.module.scss";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import userStore from "@/stores/userStore";
-import projectsStore from "@/stores/projectsStores";
+import Modal from "@/components/Modal";
+import companyStore from "@/stores/companyStore";
 
-import { MdQrCode2 } from "react-icons/md";
-
-export default function Portfolio() {
+export default function Company() {
     const params = useParams();
     const slug = params.slug;
-    const user = userStore((state) => state.users[slug]);
+    const company = companyStore((state) => state.companies[slug]);
+    console.log(company);
+
     const [active, setActive] = useState("Tous");
-    const projects = projectsStore((state) => state.projects);
+    const [selectedProject, setSelectedProject] = useState("");
+    const project = company.projects.filter(
+        (project) => project.id == selectedProject
+    );
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const options = ["Tous", "Design", "Dev Web", "Dev IA"];
 
     const handleClick = (option) => {
@@ -26,15 +30,19 @@ export default function Portfolio() {
         setIsModalOpen(true);
         setSelectedProject(project);
     };
+    const closeModal = (e) => {
+        e.preventDefault();
+        setIsModalOpen(false);
+    };
 
     return (
         <main className={styles.portfolio}>
             <section className={styles.profile}>
                 <div className={styles.profile__infos}>
                     <div className={styles.profile__text}>
-                        <h1 className={styles.profile__name}>{user.name}</h1>
+                        <h1 className={styles.profile__name}>{company.name}</h1>
                         <ul className={styles.profile__job}>
-                            {user.jobs.map((job, index) => (
+                            {company.jobs.map((job, index) => (
                                 <li
                                     key={index}
                                     className={styles.profile__job__item}
@@ -44,15 +52,13 @@ export default function Portfolio() {
                             ))}
                         </ul>
                         <p className={styles.profile__catchphrase}>
-                            {user.catchprase}
+                            {company.catchprase}
                         </p>
                     </div>
-                    <div className={styles.profile__code}>
-                        <MdQrCode2 size={100} />
-                    </div>
+                    <div className={styles.profile__code}>QR Code</div>
                 </div>
                 <ul className={styles.profile__tags}>
-                    {user.tags.map((tag, index) => (
+                    {company.tags.map((tag, index) => (
                         <li key={index} className={styles.profile__tags__item}>
                             {tag}
                         </li>
@@ -63,19 +69,28 @@ export default function Portfolio() {
                 <div className={styles.presentation__description}>
                     <h2>Description</h2>
                     <p className={styles.description__text}>
-                        {user.description}
+                        {company.description}
                     </p>
                 </div>
                 <div className={styles.presentation__logiciels}>
-                    <h2>Logiciels/Technologie</h2>
+                    <h2>L'équipe</h2>
                     <ul className={styles.presentation__logiciels__list}>
-                        {user.skills.map((skill, index) => (
+                        {company.team.map((person, index) => (
                             <li
                                 key={index}
                                 className={styles.presentation__logiciels__list}
                                 __item
                             >
-                                {skill.icon}
+                                <div className={styles.test__image}>
+                                    <Image
+                                        src={`/images/${person.avatar}`}
+                                        width={500}
+                                        height={500}
+                                        quality={90}
+                                        alt={person.image}
+                                    />
+                                </div>
+                                {person.name}
                             </li>
                         ))}
                     </ul>
@@ -83,11 +98,11 @@ export default function Portfolio() {
             </section>
             <section className={styles.banner}>
                 <Image
-                    src={`/images/${user.banner}`}
+                    src={`/images/${company.banner}`}
                     width={1200}
                     height={1000}
                     quality={90}
-                    alt={user.banner}
+                    alt={company.banner}
                 />
             </section>
             <section className={styles.project}>
@@ -106,8 +121,7 @@ export default function Portfolio() {
                 </ul>
 
                 <ul className={styles.project__list}>
-                    {projects
-                        .filter((project) => project.author == user.name)
+                    {company.projects
                         .filter(
                             (project) =>
                                 active === "Tous" || project.tags[0] === active
@@ -123,11 +137,11 @@ export default function Portfolio() {
                         ))}
                 </ul>
             </section>
-            {/* <Modal
+            <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 project={project}
-            /> */}
+            />
         </main>
     );
 }
