@@ -12,42 +12,25 @@ export default function Connexion() {
         e.preventDefault();
 
         try {
-            // Envoyer une requête POST à l'API de connexion
-            const response = await fetch(
-                "https://olenx-platforms-api.onrender.com/users/sign_in",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        user: {
-                            email,
-                            password,
-                        },
-                    }),
-                }
-            );
+            const response = await fetch("/api/users/sign_in", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+            console.log(data);
 
             if (response.ok) {
-                // Récupérer le token JWT depuis les en-têtes de la réponse
-                const token = response.headers.get("Authorization");
-
-                if (token) {
-                    // Stocker le token dans le localStorage
-                    localStorage.setItem("token", token);
-                    alert("Connexion réussie !");
-                    router.push("/profil"); // Rediriger vers la page de profil
-                } else {
-                    setError("Token non reçu dans les en-têtes");
-                }
+                localStorage.setItem("token", data.token);
+                console.log(data.token);
+                alert("Connexion réussie !");
+                router.push("/profil"); // Redirection après connexion
             } else {
-                // Afficher un message d'erreur
-                const data = await response.json();
-                setError(data.message || "Erreur lors de la connexion");
+                setError(data.error || "Erreur de connexion");
             }
         } catch (err) {
-            setError("Une erreur est survenue lors de la connexion");
+            setError("Une erreur est survenue");
             console.error(err);
         }
     };

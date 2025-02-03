@@ -17,6 +17,7 @@ export default function Profil() {
             // Ici, vous pouvez décoder le token JWT pour récupérer les informations de l'utilisateur
             try {
                 const payload = JSON.parse(atob(token.split(".")[1])); // Décoder le payload du JWT
+
                 setUser({ email: payload.email }); // Exemple d'utilisateur
             } catch (error) {
                 console.error("Token invalide", error);
