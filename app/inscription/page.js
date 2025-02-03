@@ -1,75 +1,70 @@
 "use client";
 import { useState } from "react";
-import formsStore from "@/stores/formStore";
-import styles from "@/styles/pages/inscription.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function Inscription() {
-    const [formData, setFormData] = useState({
-        userInfos: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            telephone: "",
-            society: "",
-            SIRET: "",
-            message: "",
-        },
-    });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [error, setError] = useState("");
+    const router = useRouter();
 
-    const formLabels = formsStore((state) => state.formLabels);
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            userInfos: { ...prevData.userInfos, [name]: value },
-        }));
-        // Reset invalid fields when the user starts typing
-        setInvalidFields((prev) => ({ ...prev, [name]: false }));
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch("/api/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    password_confirmation: passwordConfirmation,
+                }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("Inscription réussie !");
+                router.push("/connexion"); // Rediriger vers la connexion
+            } else {
+                setError(data.error || "Erreur lors de l'inscription");
+            }
+        } catch (err) {
+            setError("Une erreur est survenue");
+            console.error(err);
+        }
     };
 
-    const validateForm = () => {
-        const newInvalidFields = {};
-        const { firstName, lastName, email } = formData.userInfos;
-
-        // Vérification des champs requis
-        if (!firstName) newInvalidFields.firstName = true;
-        if (!lastName) newInvalidFields.lastName = true;
-
-        // Vérification du format de l'email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!email || !emailPattern.test(email)) newInvalidFields.email = true;
-
-        // Retourne les champs invalides
-        return newInvalidFields;
-    };
     return (
-        <section className={styles.inscription}>
-            <h1 className={styles.inscription__title}>S'inscrire</h1>
-            <form className={styles.form}>
-                <div className={styles.input__container}>
-                    {formLabels.map((label) => (
-                        <div key={label.id} className={styles.input__label}>
-                            <label htmlFor={label.name}>{label.infos}</label>
-                            <input
-                                id={label.name}
-                                type={label.type}
-                                name={label.name}
-                                placeholder={label.placeholder}
-                                value={formData.userInfos[label.name]}
-                                onChange={handleChange}
-                                required={label.required}
-                            />
-                        </div>
-                    ))}
-
-                    <p id={styles.formHelp}>(*) champs requis</p>
-                    <div className={styles.btnContainer}>
-                        <button type="submit" className={`cta`}>
-                            Nous rejoindre
-                        </button>
-                    </div>
-                </div>
+        <div>
+            <h1>Inscription</h1>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Mot de passe"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Confirmer le mot de passe"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                    required
+                />
+                <button type="submit">S'inscrire</button>
             </form>
-        </section>
+        </div>
     );
 }
