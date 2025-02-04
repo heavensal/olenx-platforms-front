@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
+import styles from "@/styles/pages/inscription.module.scss";
 export default function Inscription() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -38,11 +39,12 @@ export default function Inscription() {
     };
 
     return (
-        <div>
+        <main className={styles.inscription}>
             <h1>Inscription</h1>
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.inscription__form}>
                 <input
+                    className={styles.inscription__form__input}
                     type="email"
                     placeholder="Email"
                     value={email}
@@ -50,6 +52,7 @@ export default function Inscription() {
                     required
                 />
                 <input
+                    className={styles.inscription__form__input}
                     type="password"
                     placeholder="Mot de passe"
                     value={password}
@@ -57,14 +60,23 @@ export default function Inscription() {
                     required
                 />
                 <input
+                    className={styles.inscription__form__input}
                     type="password"
                     placeholder="Confirmer le mot de passe"
                     value={passwordConfirmation}
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                     required
                 />
-                <button type="submit">S'inscrire</button>
+                <button
+                    type="submit"
+                    className={`${styles.inscription__cta} cta`}
+                >
+                    S'inscrire
+                </button>
             </form>
-        </div>
+            <Link href={"/connexion"} className="switch-link">
+                Déja un compte ?
+            </Link>
+        </main>
     );
 }

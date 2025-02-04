@@ -1,4 +1,4 @@
-.inscription {
+.connexion {
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     }
 }
 @media (min-width: 768px) {
-    .inscription {
+    .connexion {
         width: 50%;
         margin: 10dvh;
     }
