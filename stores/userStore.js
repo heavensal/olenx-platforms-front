@@ -1,102 +1,98 @@
 import { create } from "zustand";
-import {
-    SiAdobephotoshop,
-    SiAdobeillustrator,
-    SiWordpress,
-} from "react-icons/si";
-import { RiNextjsFill, RiNodejsFill } from "react-icons/ri";
 
-const users = [
-    {
-        id: 0,
-        name: "Ibrahima BARRY",
-        jobs: ["Développeur Web Front-End", "Graphiste", "Expert SEO"],
-        catchphrase: "Sheesh",
-        tags: ["Développement Web", "Design", "Rédaction", "Marketing"],
-        description:
-            "Développeur web passionné avec une expertise en front-end, notamment avec Next.js. Solides bases en back-end avec Node.js, et expérience approfondie avec les CMS tels que Shopify & Wordpress. Appréciant découvrir des cultures, je suis ouvert à des opportuinités de collaboration en international, en télétravail ou sur site",
-        skills: [
-            {
-                id: 0,
-                name: "Photoshop",
-                icon: <SiAdobephotoshop size={30} />,
-            },
-            {
-                id: 1,
-                name: "Illustrator",
-                icon: <SiAdobeillustrator size={30} />,
-            },
-            {
-                id: 2,
-                name: "Next.js",
-                icon: <RiNextjsFill size={30} />,
-            },
-            {
-                id: 3,
-                name: "Wordpress",
-                icon: <SiWordpress size={30} />,
-            },
-            {
-                id: 4,
-                name: "Node.js",
-                icon: <RiNodejsFill size={30} />,
-            },
-        ],
-        banner: "banner/ibra-banner.jpeg",
-        projects: [
-            {
-                id: 0,
-                title: "Zooom",
-                subtitle: "media mode",
-                catchphrase: "La mode par (0°0)",
-                tags: ["Design"],
-                description: "Lorem20",
-                image: "projects/zooom.png",
-                images: ["e"],
-                author: "Ibrahima BARRY",
-            },
-            {
-                id: 1,
-                title: "Moment",
-                subtitle: "",
-                catchphrase: "La mode par (0°0)",
-                tags: ["Dev Web"],
-                description: "Lorem20",
-                image: "projects/moment.png",
-                images: ["e"],
-            },
-        ],
-    },
-    {
-        id: 1,
-        name: "Ib BARRY",
-        job: ["Développeur Web Front-End", "Graphiste", "Expert SEO"],
-        tags: ["Développement Web", "Design", "Rédaction", "Marketing"],
-        project: [
-            {
-                id: 0,
-                title: "Zooom",
-                subtitle: "media mode",
-                catchphrase: "La mode par (0°0)",
-                tags: ["Design"],
-                description: "Lorem20",
-                images: [],
-            },
-            {
-                id: 1,
-                title: "Moment",
-                subtitle: "",
-                catchphrase: "La mode par (0°0)",
-                tags: ["Design"],
-                description: "Lorem20",
-                images: [],
-            },
-        ],
-    },
-];
+const userStore = create((set, get) => ({
+    user: null, // Données de l'utilisateur connecté
+    portfolio: null, // Portfolio de l'utilisateur
+    loading: false, // État de chargement
+    error: null, // Erreur éventuelle
 
-const userStore = create((set) => ({
-    users,
+    // Fonction pour récupérer l'utilisateur connecté et son portfolio
+    fetchUser: async () => {
+        set({ loading: true, error: null });
+
+        try {
+            const token = localStorage.getItem("token"); // Récupération du token
+
+            if (!token) {
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
+            }
+
+            // Récupération des données de l'utilisateur
+            const response = await fetch("/api/me/portfolio", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(data);
+
+            set({
+                user: data.user,
+                portfolio: data.portfolio,
+                loading: false,
+            });
+        } catch (error) {
+            console.error(
+                "Erreur lors de la récupération de l'utilisateur:",
+                error
+            );
+            set({ error: error.message, loading: false });
+        }
+    },
+
+    // Fonction pour mettre à jour le portfolio
+    updatePortfolio: async (updatedData) => {
+        set({ loading: true, error: null });
+
+        try {
+            const token = localStorage.getItem("token"); // Récupération du token
+
+            if (!token) {
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
+            }
+
+            // Envoi de la requête PATCH au backend
+            const response = await fetch("/api/users", {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Erreur lors de la mise à jour");
+            }
+
+            // Mise à jour du store avec les nouvelles données
+            set((state) => ({
+                portfolio: { ...state.portfolio, ...updatedData },
+                loading: false,
+            }));
+
+            return { success: true, message: "Mise à jour réussie !" };
+        } catch (error) {
+            console.error("Erreur lors de la mise à jour du portfolio:", error);
+            set({ error: error.message, loading: false });
+            return { success: false, message: error.message };
+        }
+    },
+
+    // Fonction pour déconnecter l'utilisateur
+    logout: () => {
+        localStorage.removeItem("token"); // Suppression du token
+        set({ user: null, portfolio: null, error: null });
+    },
 }));
 
 export default userStore;
