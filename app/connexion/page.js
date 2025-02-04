@@ -27,7 +27,7 @@ export default function Connexion() {
                 localStorage.setItem("token", data.token);
                 console.log(data.token);
                 alert("Connexion réussie !");
-                router.push("/profil"); // Redirection après connexion
+                router.push("/me/portfolio"); // Redirection après connexion
             } else {
                 setError(data.error || "Erreur de connexion");
             }

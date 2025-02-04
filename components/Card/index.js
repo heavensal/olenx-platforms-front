@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Modal from "../Modal";
 
-const Card = ({ card }) => {
+const Card = ({ card, page }) => {
     console.log(card);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,17 +19,20 @@ const Card = ({ card }) => {
     return (
         <div className={styles.card} onClick={() => openModal()}>
             <div className={styles.card__image}>
-                <Image
-                    src={`/images/${card.avatar}`}
-                    width={500}
-                    height={300}
-                    quality={90}
-                    alt={card.avatar}
-                />
+                {/* {card?.avatar && (
+                    <Image
+                        src={card.avatar}
+                        alt={card.name}
+                        width={200}
+                        height={200}
+                    />
+                )} */}
             </div>
             <div className={styles.card__text}>
-                <h3 className={styles.card__title}>{card.description}</h3>
-                <p className={styles.card__tag}>{card.company_name}</p>
+                <h3 className={styles.card__title}>
+                    {page == "me" ? card.title : card.description}
+                </h3>
+                <p className={styles.card__tag}>{card.description}</p>
             </div>
             <Modal isOpen={isModalOpen} onClose={closeModal} project={card} />
         </div>

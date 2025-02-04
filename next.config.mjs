@@ -5,6 +5,19 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "res-5.cloudinary.com",
+            },
+            {
+                protocol: "https",
+                hostname: "res.cloudinary.com",
+            },
+        ],
+    },
+
     sassOptions: {
         includePaths: [join(__dirname, "styles")],
         prependData: `

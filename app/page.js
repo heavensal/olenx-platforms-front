@@ -50,13 +50,6 @@ export default function Home() {
                     ))}
                 </ul>
             </div>
-            {/* <ul className={styles.users__list}>
-                {projects.map((project) => (
-                    <li key={project.id} className={styles.users__list__card}>
-                        <Card card={project} />
-                    </li>
-                ))}
-            </ul> */}
             <ul className={styles.users__list}>
                 {portfolios.map((portfolio) => (
                     <li key={portfolio.id} className={styles.users__list__card}>
