@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from "@/styles/pages/connexion.module.scss";
+import Link from "next/link";
 
 export default function Connexion() {
     const [email, setEmail] = useState("");
@@ -36,11 +38,12 @@ export default function Connexion() {
     };
 
     return (
-        <div>
-            <h1>Connexion</h1>
+        <main className={styles.connexion}>
+            <h1 className={styles.connexion__title}>Connexion</h1>
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.connexion__form}>
                 <input
+                    className={styles.connexion__form__input}
                     type="email"
                     placeholder="Email"
                     value={email}
@@ -48,14 +51,23 @@ export default function Connexion() {
                     required
                 />
                 <input
+                    className={styles.connexion__form__input}
                     type="password"
                     placeholder="Mot de passe"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-                <button type="submit">Se connecter</button>
+                <button
+                    className={`${styles.connexion__cta} cta`}
+                    type="submit"
+                >
+                    Se connecter
+                </button>
             </form>
-        </div>
+            <Link href={"/inscription"} className="switch-link">
+                Pas encore de compte ?
+            </Link>
+        </main>
     );
 }

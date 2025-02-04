@@ -2,12 +2,17 @@
 import Card from "@/components/Card";
 import projectsStore from "@/stores/projectsStores";
 import styles from "@/styles/pages/home.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 
 export default function Home() {
     // const cards = cardStore((state) => state.cards);
-    const projects = projectsStore((state) => state.projects);
+    const { portfolios, loading, error, fetchPortfolios } = projectsStore();
+
+    useEffect(() => {
+        fetchPortfolios();
+    }, [fetchPortfolios]);
+
     const options = ["Tous", "Design", "Dev Web", "Dev IA"];
     const [active, setActive] = useState("Tous");
     const handleClick = (option) => {
@@ -45,10 +50,17 @@ export default function Home() {
                     ))}
                 </ul>
             </div>
-            <ul className={styles.users__list}>
+            {/* <ul className={styles.users__list}>
                 {projects.map((project) => (
                     <li key={project.id} className={styles.users__list__card}>
                         <Card card={project} />
+                    </li>
+                ))}
+            </ul> */}
+            <ul className={styles.users__list}>
+                {portfolios.map((portfolio) => (
+                    <li key={portfolio.id} className={styles.users__list__card}>
+                        <Card card={portfolio} />
                     </li>
                 ))}
             </ul>
