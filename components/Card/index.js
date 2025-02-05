@@ -4,8 +4,6 @@ import Image from "next/image";
 import Modal from "../Modal";
 
 const Card = ({ card, page }) => {
-    console.log(card);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -19,9 +17,9 @@ const Card = ({ card, page }) => {
     return (
         <div className={styles.card} onClick={() => openModal()}>
             <div className={styles.card__image}>
-                {/* {card?.avatar && (
+                {/* {card.avatar && (
                     <Image
-                        src={card.avatar}
+                        src={card?.avatar}
                         alt={card.name}
                         width={200}
                         height={200}
@@ -34,7 +32,7 @@ const Card = ({ card, page }) => {
                 </h3>
                 <p className={styles.card__tag}>{card.description}</p>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal} project={card} />
+            {/* <Modal isOpen={isModalOpen} onClose={closeModal} project={card} /> */}
         </div>
     );
 };
