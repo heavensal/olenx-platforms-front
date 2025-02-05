@@ -1,6 +1,8 @@
 @use "reset.scss";
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 body {
+    background: vars.$bg--dark;
+    color: white;
     font-family: "Plus Jakarta Sans", serif;
     font-optical-sizing: auto;
     font-style: normal;
