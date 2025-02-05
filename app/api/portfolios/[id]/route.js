@@ -1,6 +1,5 @@
 export async function GET(req, { params }) {
-    const { id } = params;
-    console.log(id);
+    const { id } = await params;
 
     if (!id) {
         return new Response(JSON.stringify({ error: "ID requis" }), {

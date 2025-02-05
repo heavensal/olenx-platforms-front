@@ -4,39 +4,17 @@ import { useEffect, useState } from "react";
 import styles from "@/styles/pages/portfolio.module.scss";
 import Card from "@/components/Card";
 import Image from "next/image";
+import portfolioStore from "@/stores/portfolioStore";
 const PortfolioPage = ({ id }) => {
     const params = useParams();
 
-    const [portfolio, setPortfolio] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { fetchPortfolio, portfolio } = portfolioStore();
 
     useEffect(() => {
-        const fetchPortfolio = async () => {
-            try {
-                const response = await fetch(`/api/portfolios/${params.id}`);
-                if (!response.ok) {
-                    throw new Error("Erreur lors du chargement du portfolio");
-                }
-                const data = await response.json();
-                console.log(data.portfolio);
-
-                setPortfolio(data.portfolio);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPortfolio();
+        fetchPortfolio(params.id);
     }, [id]);
 
-    if (loading) return <p>Chargement...</p>;
-
-    if (error) return <p style={{ color: "red" }}>Erreur: {error}</p>;
-
-    if (!portfolio) return <p>Aucun portfolio trouvé</p>;
+    if (!portfolio) return <p>Chargement</p>;
 
     return (
         <main className={styles.portfolio}>
@@ -75,9 +53,6 @@ const PortfolioPage = ({ id }) => {
                             <Card card={project} page={"me"} />
                         </li>
                     ))}
-                    <li className={styles.product__list__item}>
-                        <p onClick={() => setIsCreating(true)}>new shit</p>
-                    </li>
                 </ul>
             </section>
         </main>
