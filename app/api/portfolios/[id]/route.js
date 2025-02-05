@@ -12,7 +12,6 @@ export async function GET(req, { params }) {
         `https://olenx-platforms-api.onrender.com/api/v1/portfolios/${id}.json`,
         {
             headers: {
-                Authorization: "Bearer VOTRE_TOKEN", // Remplace par un vrai token si besoin
                 "Content-Type": "application/json",
             },
             cache: "no-store",

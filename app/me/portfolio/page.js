@@ -59,7 +59,6 @@ export default function Portfolio() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const result = await updatePortfolio(formData);
             if (result.success) {
@@ -164,7 +163,7 @@ export default function Portfolio() {
                             <Card card={project} page={"me"} />
                         </li>
                     ))}
-                    <li>
+                    <li className={styles.product__list__item}>
                         <p onClick={() => setIsCreating(true)}>new shit</p>
                     </li>
                 </ul>
