@@ -51,7 +51,6 @@ export default function Company() {
                             {/* {company.catchprase} */}
                         </p>
                     </div>
-                    <div className={styles.profile__code}>QR Code</div>
                 </div>
                 <ul className={styles.profile__tags}>
                     {/* {company.tags.map((tag, index) => (
