@@ -5,6 +5,7 @@ import styles from "@/styles/pages/portfolio.module.scss";
 import Card from "@/components/Card";
 import Image from "next/image";
 import portfolioStore from "@/stores/portfolioStore";
+import Profile from "@/container/profile";
 const PortfolioPage = ({ id }) => {
     const params = useParams();
 
@@ -18,7 +19,7 @@ const PortfolioPage = ({ id }) => {
 
     return (
         <main className={styles.portfolio}>
-            <section className={styles.profile}>
+            {/* <section className={styles.profile}>
                 <div className={styles.profile__infos}>
                     <div className={styles.profile__text}>
                         <h1 className={styles.profile__name}>
@@ -42,7 +43,8 @@ const PortfolioPage = ({ id }) => {
                         )}
                     </div>
                 </div>
-            </section>
+            </section> */}
+            <Profile portfolio={portfolio} />
             <section className={styles.project}>
                 <ul className={styles.project__list}>
                     {portfolio?.projects.map((project) => (

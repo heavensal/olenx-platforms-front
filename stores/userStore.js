@@ -3,6 +3,7 @@ import { create } from "zustand";
 const userStore = create((set, get) => ({
     user: null, // Données de l'utilisateur connecté
     portfolio: null, // Portfolio de l'utilisateur
+    projects: null, // Projets de l'utilisateur
     loading: false, // État de chargement
     error: null, // Erreur éventuelle
 
@@ -31,6 +32,7 @@ const userStore = create((set, get) => ({
             set({
                 user: data.user,
                 portfolio: data.portfolio,
+                projects: data.portfolio.projects,
                 loading: false,
             });
         } catch (error) {
@@ -85,88 +87,64 @@ const userStore = create((set, get) => ({
         }
     },
 
-    // Fonction pour créer un projet
-    createProject: async (projectData) => {
-        set({ loading: true, error: null });
-
+    // Fonction pour récupérerer les projets
+    fetchProjects: async () => {
         try {
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem("token"); // <-- Ajout de la récupération du token
             if (!token)
                 throw new Error("Aucun token trouvé, veuillez vous connecter.");
 
-            const response = await fetch(
-                "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects.json",
-                {
-                    method: "POST",
-                    headers: {
-                        Authorization: ` ${token}`,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(projectData),
-                }
-            );
-            const data = await response.json();
+            const res = await fetch("/api/me/portfolio/projects", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`, // <-- Corrigé ici
+                    "Content-Type": "application/json",
+                },
+            });
 
-            if (response.ok) {
-                get().fetchUser(); // Recharger les données pour voir le nouveau projet
-            } else {
-                console.error("Erreur lors de la création :", data.message);
-            }
-        } catch (err) {
-            console.error("Erreur lors de la création :", err);
+            if (!res.ok) throw new Error(`Erreur HTTP: ${res.status}`);
+
+            const data = await res.json();
+            console.log("data", data);
+
+            set({ projects: data });
+        } catch (error) {
+            console.error("Erreur lors de la récupération des projets:", error);
+            set({ error: error.message });
         }
     },
-
-    // Fonction pour mettre à jour un projet existant
-    updateProject: async (projectId, updatedProjectData) => {
-        set({ loading: true, error: null });
-
+    // Fonction pour créer un projet
+    createProject: async (projectData, token) => {
         try {
             const token = localStorage.getItem("token");
             if (!token)
                 throw new Error("Aucun token trouvé, veuillez vous connecter.");
 
-            const response = await fetch(
-                `https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects/${projectId}.json`,
-                {
-                    method: "PATCH",
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(updatedProjectData),
-                }
-            );
+            const response = await fetch("/api/me/portfolio/projects", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`, // <-- Corrigé ici
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(projectData),
+            });
+
             const data = await response.json();
 
             if (response.ok) {
-                // Mettre à jour le portfolio local avec les nouvelles informations
-                set((state) => ({
-                    portfolio: {
-                        ...state.portfolio,
-                        projects: state.portfolio.projects.map((project) =>
-                            project.id === projectId
-                                ? { ...project, ...updatedProjectData }
-                                : project
-                        ),
-                    },
-                    loading: false,
-                }));
-
-                return {
-                    success: true,
-                    message: "Mise à jour du projet réussie !",
-                };
+                // Recharge directement les projets après la création
+                await get().fetchProjects();
             } else {
-                throw new Error(
-                    data.error || "Erreur lors de la mise à jour du projet"
+                console.error(
+                    "Erreur lors de la création du projet:",
+                    data.error
                 );
             }
         } catch (error) {
-            set({ error: error.message, loading: false });
-            return { success: false, message: error.message };
+            console.error("Erreur réseau:", error);
         }
     },
+    // Fonction pour mettre à jour un projet existant
 
     // Fonction pour déconnecter l'utilisateur
     logout: () => {

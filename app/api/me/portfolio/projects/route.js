@@ -1,3 +1,56 @@
+export async function GET(req) {
+    try {
+        // Vérifier si l'authentification est fournie
+        const authHeader = req.headers.get("Authorization");
+        if (!authHeader) {
+            return new Response(
+                JSON.stringify({ error: "Token d'authentification manquant" }),
+                { status: 401 }
+            );
+        }
+
+        // Effectuer la requête GET vers l'API externe
+        const response = await fetch(
+            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects",
+            {
+                method: "GET",
+                headers: {
+                    Authorization: authHeader, // Ajoute le token
+                    "Content-Type": "application/json",
+                },
+                cache: "no-store",
+            }
+        );
+
+        console.log("Statut de la réponse :", response.status);
+
+        // Vérifier si le serveur renvoie une réponse vide
+        const responseText = await response.text();
+        console.log("Réponse brute du serveur :", responseText);
+
+        const data = responseText ? JSON.parse(responseText) : null;
+
+        if (!response.ok) {
+            return new Response(
+                JSON.stringify({
+                    error:
+                        data?.message ||
+                        "Erreur lors de la récupération des projets",
+                }),
+                { status: response.status }
+            );
+        }
+
+        return new Response(JSON.stringify(data), { status: 200 });
+    } catch (error) {
+        console.error("Erreur serveur :", error);
+        return new Response(
+            JSON.stringify({ error: "Erreur interne du serveur" }),
+            { status: 500 }
+        );
+    }
+}
+
 export async function POST(req) {
     try {
         const body = await req.json();
@@ -13,7 +66,7 @@ export async function POST(req) {
         }
 
         const response = await fetch(
-            "https://olenx-platforms-api.onrender.com/api/v1/me/projects.json",
+            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects",
             {
                 method: "POST",
                 headers: {
@@ -25,13 +78,19 @@ export async function POST(req) {
             }
         );
 
-        const data = await response.json();
+        console.log("Statut de la réponse :", response.status);
+
+        // Vérifier si le serveur renvoie une réponse vide
+        const responseText = await response.text();
+        console.log("Réponse brute du serveur :", responseText);
+
+        const data = responseText ? JSON.parse(responseText) : null;
 
         if (!response.ok) {
             return new Response(
                 JSON.stringify({
                     error:
-                        data.message || "Erreur lors de la création du projet",
+                        data?.message || "Erreur lors de la création du projet",
                 }),
                 { status: response.status }
             );
