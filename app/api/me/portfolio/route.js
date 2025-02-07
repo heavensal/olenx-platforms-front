@@ -43,53 +43,54 @@ export async function GET(req) {
 
 export async function PATCH(req) {
     try {
-        const body = await req.json();
+        // Récupérer le token depuis les headers de la requête
         const authHeader = req.headers.get("Authorization");
-        // Validation des champs
-        if (!body.portfolio?.company_name && !body.portfolio?.description) {
+
+        if (!authHeader) {
             return new Response(
-                JSON.stringify({ error: "Au moins un champ doit être fourni" }),
+                JSON.stringify({ error: "Token d'authentification requis" }),
+                { status: 401 }
+            );
+        }
+
+        // Récupérer les données envoyées dans la requête (par exemple, un formulaire avec avatar, nom, etc.)
+        const body = await req.json();
+
+        // Vérifie que les données nécessaires sont présentes
+        if (!body.company_name || !body.description) {
+            return new Response(
+                JSON.stringify({
+                    error: "Données manquantes (nom, description)",
+                }),
                 { status: 400 }
             );
         }
 
-        // Corps de la requête
-        const requestBody = {
-            portfolio: {
-                company_name: body.portfolio.company_name,
-                description: body.portfolio.description,
-            },
-        };
-
-        // Envoi de la requête PATCH à l'API externe
+        // Effectuer la requête PATCH vers l'API avec les nouvelles données
         const response = await fetch(
-            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio",
+            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio.json",
             {
                 method: "PATCH",
                 headers: {
                     Authorization: authHeader,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(requestBody),
+                body: JSON.stringify(body), // Envoie les nouvelles données dans le corps de la requête
             }
         );
 
-        // Vérifie si la réponse est valide
-
         if (!response.ok) {
-            const text = await response.text(); // Lire la réponse comme texte brut
-            console.error("Erreur de l'API externe :", text);
-            throw new Error(`Erreur HTTP: ${response.status}`);
+            return new Response(
+                JSON.stringify({
+                    error: "Erreur lors de la mise à jour du portfolio",
+                }),
+                { status: response.status }
+            );
         }
 
-        // Parser la réponse en JSON uniquement si elle est valide
-        const data = await response.json();
-
-        // Réponse en cas de succès
-        return new Response(JSON.stringify(data), { status: 200 });
+        const updatedPortfolio = await response.json();
+        return new Response(JSON.stringify(updatedPortfolio), { status: 200 });
     } catch (error) {
-        // Gestion des erreurs internes
-        console.error("Erreur lors de la requête PATCH:", error);
         return new Response(
             JSON.stringify({ error: "Erreur interne du serveur" }),
             { status: 500 }

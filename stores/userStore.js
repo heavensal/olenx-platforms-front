@@ -5,6 +5,7 @@ const userStore = create((set, get) => ({
     portfolio: null, // Portfolio de l'utilisateur
     projects: null, // Projets de l'utilisateur
     ideas: null, // Idées de l'utilisateur
+    avatar: null,
     loading: false, // État de chargement
     error: null, // Erreur éventuelle
 
@@ -35,6 +36,7 @@ const userStore = create((set, get) => ({
                 portfolio: data.portfolio,
                 projects: data.portfolio.projects,
                 ideas: data.portfolio.ideas,
+                avatar: data.portfolio.avatar,
                 loading: false,
             });
         } catch (error) {
@@ -47,46 +49,47 @@ const userStore = create((set, get) => ({
     },
 
     // Fonction pour mettre à jour le portfolio
+
     updatePortfolio: async (updatedData) => {
         set({ loading: true, error: null });
-        console.log(updatedData.avatar);
 
-        // try {
-        //     const token = localStorage.getItem("token");
-        //     if (!token)
-        //         throw new Error("Aucun token trouvé, veuillez vous connecter.");
+        try {
+            const token = localStorage.getItem("token");
+            if (!token)
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
 
-        //     const response = await fetch(
-        //         "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio",
-        //         {
-        //             method: "PATCH",
-        //             headers: {
-        //                 Authorization: `Bearer ${token}`,
-        //                 "Content-Type": "application/json",
-        //             },
-        //             // Envoi du FormData au lieu d'un JSON
-        //         }
-        //     );
+            // Créer l'objet avec les données mises à jour
+            const updatedPortfolio = {
+                company_name: updatedData.company_name,
+                description: updatedData.description,
+            };
 
-        //     const data = await response.json();
-        //     if (!response.ok)
-        //         throw new Error(data.error || "Erreur lors de la mise à jour");
+            // Effectuer la requête PATCH pour mettre à jour le portfolio
+            const response = await fetch("/api/me/portfolio", {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json", // Envoi des données sous forme de JSON
+                },
+                body: JSON.stringify(updatedPortfolio), // Envoi des données mises à jour en JSON
+            });
 
-        //     set((state) => ({
-        //         portfolio: {
-        //             ...state.portfolio,
-        //             company_name: updatedData.company_name,
-        //             description: updatedData.description,
-        //             avatar: data.portfolio.avatar || state.portfolio.avatar, // Mettre à jour l'avatar si la réponse en contient un
-        //         },
-        //         loading: false,
-        //     }));
+            const data = await response.json();
 
-        //     return { success: true, message: "Mise à jour réussie !" };
-        // } catch (error) {
-        //     set({ error: error.message, loading: false });
-        //     return { success: false, message: error.message };
-        // }
+            if (!response.ok) {
+                throw new Error(
+                    data.error || "Erreur lors de la mise à jour du portfolio"
+                );
+            }
+
+            // Mettre à jour le state du store après la réponse réussie
+            await get().fetchUser();
+
+            return { success: true, message: "Mise à jour réussie !" };
+        } catch (error) {
+            set({ error: error.message, loading: false });
+            return { success: false, message: error.message };
+        }
     },
 
     // Fonction pour récupérerer les projets
@@ -183,8 +186,6 @@ const userStore = create((set, get) => ({
     // Fonction pour mettre à jour un projet existant
     updateProject: async (projectId, updatedProjectData) => {
         try {
-            console.log(updatedProjectData, "rer-t");
-
             const token = localStorage.getItem("token");
             if (!token)
                 throw new Error("Aucun token trouvé, veuillez vous connecter.");
@@ -211,9 +212,6 @@ const userStore = create((set, get) => ({
                     }`
                 );
             }
-
-            const data = await response.json();
-            console.log("Réponse de l'API:", data);
 
             // Si la mise à jour est réussie, on recharge les projets
             if (response.ok) {
