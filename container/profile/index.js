@@ -11,8 +11,10 @@ const Profile = ({ portfolio }) => {
     const { updatePortfolio, fetchPortfolio } = userStore();
 
     const [formData, setFormData] = useState({
+        id: portfolio?.id || "",
         company_name: portfolio?.company_name || "",
         description: portfolio?.description || "",
+        avatar: portfolio?.avatar || "",
     });
 
     const openDialog = () => {
@@ -32,11 +34,34 @@ const Profile = ({ portfolio }) => {
             [name]: value,
         }));
     };
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: files[0].name, // On prend le premier fichier sélectionné
+        }));
+    };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     await updatePortfolio(formData);
+    // };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await updatePortfolio(formData);
+        const formDataToSend = new FormData();
+        formDataToSend.append("id", formData.id);
+        formDataToSend.append("company_name", formData.company_name);
+        formDataToSend.append("description", formData.description);
+
+        // Si une image est sélectionnée, on l'ajoute au FormData
+        if (formData.avatar) {
+            formDataToSend.append("avatar", formData.avatar);
+        }
+
+        // Assurez-vous que la fonction updatePortfolio attend FormData et transmet correctement l'ID.
+        await updatePortfolio(formDataToSend);
     };
 
     return (
@@ -63,6 +88,11 @@ const Profile = ({ portfolio }) => {
                                 className={styles.modal__form}
                             >
                                 <input
+                                    type="hidden"
+                                    name="id"
+                                    value={portfolio?.id}
+                                />
+                                <input
                                     type="text"
                                     name="company_name"
                                     value={formData.company_name}
@@ -70,6 +100,14 @@ const Profile = ({ portfolio }) => {
                                     placeholder="Nom de l'entreprise"
                                     className={styles.modal__form__input}
                                 />
+                                <input
+                                    type="file"
+                                    name="avatar"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    className={styles.modal__form__input}
+                                />
+
                                 <textarea
                                     name="description"
                                     value={formData.description}

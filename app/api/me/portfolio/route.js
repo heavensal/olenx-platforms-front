@@ -53,17 +53,32 @@ export async function PATCH(req) {
             );
         }
 
-        // Récupérer les données envoyées dans la requête (par exemple, un formulaire avec avatar, nom, etc.)
-        const body = await req.json();
+        // Récupérer les données envoyées dans la requête (formData)
+        const formData = await req.formData(); // Utiliser formData au lieu de json()
+
+        // Extraire les valeurs de formData
+        const company_name = formData.get("company_name");
+        const description = formData.get("description");
+        const avatar = formData.get("avatar"); // Avatar (image)
 
         // Vérifie que les données nécessaires sont présentes
-        if (!body.company_name || !body.description) {
+        if (!company_name || !description) {
             return new Response(
                 JSON.stringify({
                     error: "Données manquantes (nom, description)",
                 }),
                 { status: 400 }
             );
+        }
+
+        // Préparer les données à envoyer
+        const body = new FormData();
+        body.append("company_name", company_name);
+        body.append("description", description);
+
+        // Ajouter l'avatar à FormData si disponible
+        if (avatar) {
+            body.append("avatar", avatar);
         }
 
         // Effectuer la requête PATCH vers l'API avec les nouvelles données
@@ -73,9 +88,9 @@ export async function PATCH(req) {
                 method: "PATCH",
                 headers: {
                     Authorization: authHeader,
-                    "Content-Type": "application/json",
+                    // Notez que pour "multipart/form-data", Content-Type est géré automatiquement par le navigateur
                 },
-                body: JSON.stringify(body), // Envoie les nouvelles données dans le corps de la requête
+                body, // Utilisation de FormData directement dans le corps de la requête
             }
         );
 
