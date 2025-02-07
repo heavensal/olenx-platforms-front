@@ -14,29 +14,28 @@ const Projects = () => {
         title: "",
         description: "",
     });
-    const { createProject, projects, fetchProjects } = userStore();
 
-    const handleChange = (e) => {
-        setNewProject({ ...newProject, [e.target.name]: e.target.value });
-    };
+    const { createProject, projects, fetchProjects } = userStore();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await createProject(newProject); // Plus besoin de passer le token ici
+        await createProject(newProject);
         setNewProject({ title: "", description: "" });
     };
 
     return (
         <section className={styles.project}>
             <ul className={styles.project__list}>
-                {projects?.map((project) => (
-                    <li
-                        className={styles.product__list__item}
-                        key={project?.id}
-                    >
-                        <Card card={project} page={"me"} />
-                    </li>
-                ))}
+                {projects
+                    ?.sort((a, b) => a.id - b.id)
+                    .map((project) => (
+                        <li
+                            className={styles.product__list__item}
+                            key={project?.id}
+                        >
+                            <Card card={project} page={"me"} />
+                        </li>
+                    ))}
             </ul>
             <form onSubmit={handleSubmit}>
                 <input
@@ -44,13 +43,20 @@ const Projects = () => {
                     name="title"
                     placeholder="Titre"
                     value={newProject.title}
-                    onChange={handleChange}
+                    onChange={(e) =>
+                        setNewProject({ ...newProject, title: e.target.value })
+                    }
                 />
                 <textarea
                     name="description"
                     placeholder="Description"
                     value={newProject.description}
-                    onChange={handleChange}
+                    onChange={(e) =>
+                        setNewProject({
+                            ...newProject,
+                            description: e.target.value,
+                        })
+                    }
                 />
                 <button type="submit">Créer le projet</button>
             </form>

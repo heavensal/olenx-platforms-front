@@ -1,27 +1,57 @@
-import { NextResponse } from "next/server";
-export async function POST(req) {
+export async function DELETE(req) {
     try {
-        const body = await req.json();
-        const token = req.headers.get("Authorization");
+        const authHeader = req.headers.get("Authorization");
 
-        const response = await fetch(
-            `https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects/`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: token,
-                },
-                body: JSON.stringify(body),
-            }
+        if (!authHeader) {
+            return new Response(
+                JSON.stringify({ error: "Token d'authentification requis" }),
+                { status: 401 }
+            );
+        }
+
+        // Récupérer l'ID du projet à partir de l'URL
+        const url = new URL(req.url);
+        const projectId = url.pathname.split("/").pop();
+
+        if (!projectId) {
+            return new Response(
+                JSON.stringify({ error: "ID du projet requis" }),
+                { status: 400 }
+            );
+        }
+
+        // Envoyer la requête DELETE à l'API externe
+        const apiUrl = `https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects/${projectId}.json`;
+        const response = await fetch(apiUrl, {
+            method: "DELETE",
+            headers: {
+                Authorization: authHeader,
+            },
+        });
+
+        // Vérifier si la réponse de l'API est valide
+        if (!response.ok) {
+            const errorData = await response.json();
+            return new Response(
+                JSON.stringify({
+                    error:
+                        errorData.message ||
+                        "Échec de la suppression du projet à l'API externe",
+                }),
+                { status: response.status }
+            );
+        }
+
+        // Retourner une réponse réussie
+        return new Response(
+            JSON.stringify({ message: "Projet supprimé avec succès" }),
+            { status: 200 } // OK
         );
-
-        const data = await response.json();
-        return NextResponse.json(data, { status: response.status });
     } catch (error) {
-        return NextResponse.json(
-            { error: "Une erreur est survenue lors de la requête." },
-            { status: 500 }
+        console.error("Erreur interne du serveur :", error);
+        return new Response(
+            JSON.stringify({ error: "Erreur interne du serveur" }),
+            { status: 500 } // Internal Server Error
         );
     }
 }
@@ -50,7 +80,7 @@ export async function PATCH(req) {
         }
 
         // Envoyer les données à l'API externe
-        const apiUrl = `https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects/${body.id}.json`;
+        const apiUrl = `https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects/${projectId}`;
         const response = await fetch(apiUrl, {
             method: "PATCH", // Utilisation de PATCH pour la mise à jour partielle
             headers: {

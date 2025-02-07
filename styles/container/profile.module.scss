@@ -1,0 +1,126 @@
+.profile {
+    padding: 50px 20px;
+    display: grid;
+    grid-template-rows: 90% 10%;
+    align-items: center;
+    border-bottom: 2px solid vars.$tag__color;
+    &__code {
+        padding: 1em;
+        background: vars.$bg__transparent;
+        border: 1px solid vars.$tag__color;
+        max-width: fit-content;
+        backdrop-filter: blur(10px);
+        @include mixins.border-radius(24px);
+    }
+    &__infos {
+        display: grid;
+        grid-template-columns: 80% 20%;
+
+        align-items: center;
+    }
+    &__text {
+        display: flex;
+        max-width: 80%;
+        flex-direction: column;
+        gap: 1em;
+    }
+    &__job {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+    &__tags {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-bottom: 2em;
+        justify-content: space-around;
+        &__item {
+            transition: all 0.4s ease-in-out;
+            margin-bottom: 1em;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+    &__tags__item,
+    &__catchphrase {
+        color: vars.$tag__color;
+    }
+}
+
+.edit {
+    text-align: center;
+    &__profile {
+        &__form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+    }
+    & input {
+        font-size: 120px;
+    }
+}
+
+.modal {
+    height: 50dvh;
+    border: none;
+    width: 97%;
+    padding: 4em 1em;
+    @include mixins.border-radius(24px);
+    &__close {
+        text-align: right;
+    }
+    &__title {
+        margin-bottom: 1.3rem;
+        display: flex;
+    }
+    &__content {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 20% 80%;
+    }
+}
+
+// .modal__form {
+//     display: grid;
+//     grid-template-rows: 20% 70% 10%;
+//     gap: 1em;
+//     &__btns {
+//         display: flex;
+//         align-items: center;
+//         gap: 1em;
+//     }
+//     &__save,
+//     &__cancel {
+//         @include mixins.border-radius(20px);
+
+//         color: white;
+//         padding: 1em 2em;
+//     }
+//     &__save {
+//         background: vars.$green--sucess;
+//     }
+//     &__cancel {
+//         background: vars.$red--danger;
+//     }
+//     &__input,
+//     &__textarea {
+//         @include mixins.border-radius(8px);
+//     }
+//     &__input {
+//         padding: 1em 0.5em;
+//         font-weight: bold;
+//         font-size: 2em;
+//         width: 100%;
+//     }
+//     &__textarea {
+//         border: 1px solid vars.$border__input;
+//         padding: 1em;
+//         font-family: "Plus Jakarta Sans", serif;
+//         font-size: 1rem;
+//         &:focus {
+//             outline: none;
+//         }
+//     }
+// }

@@ -19,32 +19,7 @@ const PortfolioPage = ({ id }) => {
 
     return (
         <main className={styles.portfolio}>
-            {/* <section className={styles.profile}>
-                <div className={styles.profile__infos}>
-                    <div className={styles.profile__text}>
-                        <h1 className={styles.profile__name}>
-                            {portfolio?.company_name ||
-                                "Nom de l'entreprise non disponible"}
-                        </h1>
-                        <p className={styles.profile__catchphrase}>
-                            {portfolio?.description ||
-                                "Aucune description fournie"}
-                        </p>
-                    </div>
-                    <div className={styles.profile__code}>
-                        {portfolio?.qr_code && (
-                            <Image
-                                src={portfolio.qr_code}
-                                width={200}
-                                height={200}
-                                alt="QR Code"
-                                priority
-                            />
-                        )}
-                    </div>
-                </div>
-            </section> */}
-            <Profile portfolio={portfolio} />
+            <Profile portfolio={portfolio && portfolio} />
             <section className={styles.project}>
                 <ul className={styles.project__list}>
                     {portfolio?.projects.map((project) => (

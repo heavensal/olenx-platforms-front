@@ -11,7 +11,7 @@ export async function GET(req) {
 
         // Effectuer la requête GET vers l'API externe
         const response = await fetch(
-            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects",
+            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/ideas",
             {
                 method: "GET",
                 headers: {
@@ -63,7 +63,7 @@ export async function POST(req) {
         }
 
         const response = await fetch(
-            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/projects",
+            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/ideas",
             {
                 method: "POST",
                 headers: {
