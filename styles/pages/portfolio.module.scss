@@ -4,54 +4,6 @@
 .banner {
     padding: 50px 20px;
 }
-.profile {
-    display: grid;
-    grid-template-rows: 90% 10%;
-    align-items: center;
-    border-bottom: 2px solid vars.$tag__color;
-    &__code {
-        padding: 1em;
-        background: vars.$bg__transparent;
-        border: 1px solid vars.$tag__color;
-        max-width: fit-content;
-        backdrop-filter: blur(10px);
-        @include mixins.border-radius(24px);
-    }
-    &__infos {
-        display: grid;
-        grid-template-columns: 80% 20%;
-        margin-bottom: 2em;
-        align-items: center;
-    }
-    &__text {
-        display: flex;
-        max-width: 80%;
-        flex-direction: column;
-        gap: 1em;
-    }
-    &__job {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
-    &__tags {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        margin-bottom: 2em;
-        justify-content: space-around;
-        &__item {
-            transition: all 0.4s ease-in-out;
-            margin-bottom: 1em;
-            &:hover {
-                color: white;
-            }
-        }
-    }
-    &__tags__item,
-    &__catchphrase {
-        color: vars.$tag__color;
-    }
-}
 
 .presentation {
     display: grid;

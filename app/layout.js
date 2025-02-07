@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="fr" suppressHydrationWarning>
             <head>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/favicon/favicon.ico" />
                 <link
                     rel="icon"
                     type="image/png"

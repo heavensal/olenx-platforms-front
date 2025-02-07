@@ -63,7 +63,7 @@ export async function PATCH(req) {
 
         // Envoi de la requête PATCH à l'API externe
         const response = await fetch(
-            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio.json",
+            "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio",
             {
                 method: "PATCH",
                 headers: {

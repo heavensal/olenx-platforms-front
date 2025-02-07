@@ -4,8 +4,6 @@ body {
     background: vars.$bg--dark;
     color: white;
     font-family: "Plus Jakarta Sans", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 p {
     font-size: 16px;
@@ -64,9 +62,10 @@ input {
     background: vars.$bg__input;
     border: 1px solid vars.$border__input;
     padding: 8px 1em;
+    transition: all 0.4s ease-in-out;
     &:focus {
-        background: lightgray;
-        color: black;
+        border: 1px solid vars.$text-hover;
+        color: vars.$text-hover;
     }
 }
 
