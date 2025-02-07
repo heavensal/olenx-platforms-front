@@ -1,6 +1,7 @@
 import styles from "@/styles/components/card.module.scss";
 import { useState } from "react";
 import userStore from "@/stores/userStore";
+import Image from "next/image";
 
 const Card = ({ card, page }) => {
     const [isEditing, setIsEditing] = useState(false);

@@ -3,8 +3,8 @@ import styles from "@/styles/container/profile.module.scss";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import userStore from "@/stores/userStore";
-import { FaEdit } from "react-icons/fa";
-import { MdClose } from "react-icons/md";
+import { FaUserEdit } from "react-icons/fa";
+import { MdClose, MdOutlineQrCode2 } from "react-icons/md";
 
 const Profile = ({ portfolio }) => {
     const dialogRef = useRef(null);
@@ -135,9 +135,14 @@ const Profile = ({ portfolio }) => {
                     </dialog>
                 </div>
                 <div className={styles.edit}>
-                    <FaEdit size={30} onClick={openDialog} />
+                    <div className={styles.edit__btns}>
+                        <FaUserEdit size={30} onClick={openDialog} />
+                    </div>
+                    <div className={styles.edit__btns}>
+                        <MdOutlineQrCode2 size={30} />
+                    </div>
                 </div>
-                <div className={styles.profile__code}>
+                {/* <div className={styles.profile__code}>
                     {portfolio?.qr_code && (
                         <Image
                             src={portfolio.qr_code}
@@ -147,7 +152,7 @@ const Profile = ({ portfolio }) => {
                             priority
                         />
                     )}
-                </div>
+                </div> */}
             </div>
         </section>
     );

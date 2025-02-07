@@ -20,7 +20,7 @@
     }
     &__text {
         display: flex;
-        max-width: 80%;
+        max-width: 90%;
         flex-direction: column;
         gap: 1em;
     }
@@ -122,5 +122,15 @@
         &:focus {
             outline: none;
         }
+    }
+}
+
+.edit {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    &__btns {
+        @include mixins.flex__center;
     }
 }
