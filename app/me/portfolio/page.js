@@ -8,8 +8,10 @@ import Profile from "@/container/profile";
 import Projects from "@/container/projects";
 
 export default function Portfolio() {
-    const { portfolio, loading, error } = userStore();
-
+    const { portfolio, loading, error, fetchUser } = userStore();
+    useEffect(() => {
+        fetchUser();
+    }, []);
     if (loading) return <p>Chargement en cours...</p>;
     if (error) return <p>Erreur : {error}</p>;
 

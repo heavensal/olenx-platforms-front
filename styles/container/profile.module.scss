@@ -82,45 +82,45 @@
     }
 }
 
-// .modal__form {
-//     display: grid;
-//     grid-template-rows: 20% 70% 10%;
-//     gap: 1em;
-//     &__btns {
-//         display: flex;
-//         align-items: center;
-//         gap: 1em;
-//     }
-//     &__save,
-//     &__cancel {
-//         @include mixins.border-radius(20px);
+.modal__form {
+    display: grid;
+    grid-template-rows: 20% 70% 10%;
+    gap: 1em;
+    &__btns {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+    &__save,
+    &__cancel {
+        @include mixins.border-radius(20px);
 
-//         color: white;
-//         padding: 1em 2em;
-//     }
-//     &__save {
-//         background: vars.$green--sucess;
-//     }
-//     &__cancel {
-//         background: vars.$red--danger;
-//     }
-//     &__input,
-//     &__textarea {
-//         @include mixins.border-radius(8px);
-//     }
-//     &__input {
-//         padding: 1em 0.5em;
-//         font-weight: bold;
-//         font-size: 2em;
-//         width: 100%;
-//     }
-//     &__textarea {
-//         border: 1px solid vars.$border__input;
-//         padding: 1em;
-//         font-family: "Plus Jakarta Sans", serif;
-//         font-size: 1rem;
-//         &:focus {
-//             outline: none;
-//         }
-//     }
-// }
+        color: white;
+        padding: 1em 2em;
+    }
+    &__save {
+        background: vars.$green--sucess;
+    }
+    &__cancel {
+        background: vars.$red--danger;
+    }
+    &__input,
+    &__textarea {
+        @include mixins.border-radius(8px);
+    }
+    &__input {
+        padding: 1em 0.5em;
+        font-weight: bold;
+        font-size: 2em;
+        width: 100%;
+    }
+    &__textarea {
+        border: 1px solid vars.$border__input;
+        padding: 1em;
+        font-family: "Plus Jakarta Sans", serif;
+        font-size: 1rem;
+        &:focus {
+            outline: none;
+        }
+    }
+}

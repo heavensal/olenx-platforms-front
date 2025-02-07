@@ -1,19 +1,18 @@
 "use client";
 import styles from "@/styles/container/profile.module.scss";
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import userStore from "@/stores/userStore";
 import { FaEdit } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
 const Profile = ({ portfolio }) => {
     const dialogRef = useRef(null);
-
     const { updatePortfolio, fetchPortfolio } = userStore();
+
     const [formData, setFormData] = useState({
         company_name: portfolio?.company_name || "",
         description: portfolio?.description || "",
-        avatar: portfolio?.avatar || "",
     });
 
     const openDialog = () => {
@@ -36,12 +35,10 @@ const Profile = ({ portfolio }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const result = await updatePortfolio(formData);
-        } catch (err) {
-            console.error("Erreur lors de la mise à jour :", err);
-        }
+
+        await updatePortfolio(formData);
     };
+
     return (
         <section className={styles.profile}>
             <div className={styles.profile__infos}>
@@ -80,14 +77,7 @@ const Profile = ({ portfolio }) => {
                                     placeholder="Description"
                                     className={styles.modal__form__textarea}
                                 />
-                                <input
-                                    type="file"
-                                    id="avatar"
-                                    name="avatar"
-                                    value={formData.avatar}
-                                    onChange={handleChange}
-                                    accept="image/png, image/jpeg"
-                                />
+
                                 <div className={styles.modal__form__btns}>
                                     <button
                                         type="submit"
@@ -109,8 +99,7 @@ const Profile = ({ portfolio }) => {
                 <div className={styles.edit}>
                     <FaEdit size={30} onClick={openDialog} />
                 </div>
-                {/* <div className={styles.profile__code}>
-                    
+                <div className={styles.profile__code}>
                     {portfolio?.qr_code && (
                         <Image
                             src={portfolio.qr_code}
@@ -120,7 +109,7 @@ const Profile = ({ portfolio }) => {
                             priority
                         />
                     )}
-                </div> */}
+                </div>
             </div>
         </section>
     );
