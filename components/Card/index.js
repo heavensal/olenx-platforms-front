@@ -11,7 +11,7 @@ const Card = ({ card, page }) => {
         description: card.description,
     });
 
-    const { deleteProject, updateProject } = userStore();
+    const { user, deleteProject, updateProject } = userStore();
 
     const handleDelete = async () => {
         await deleteProject(card.id);
@@ -43,7 +43,7 @@ const Card = ({ card, page }) => {
                 )} */}
             </div>
             <div className={styles.card__text}>
-                {isEditing ? (
+                {user && isEditing ? (
                     <form onSubmit={handleUpdate}>
                         <input type="hidden" name="id" value={card?.id} />
                         <input
@@ -72,16 +72,24 @@ const Card = ({ card, page }) => {
                         <h3 className={styles.card__title}>
                             {page === "me" ? card.title : card.description}
                         </h3>
-                        <p className={styles.card__tag}>{card.description}</p>
+                        <p className={styles.card__paragraph}>
+                            {card.description}
+                        </p>
                         {page === "me" && (
-                            <>
-                                <button onClick={handleDelete}>
-                                    Supprimer
-                                </button>
-                                <button onClick={() => setIsEditing(true)}>
+                            <div className={styles.btns}>
+                                <button
+                                    className={styles.btns__modify}
+                                    onClick={() => setIsEditing(true)}
+                                >
                                     Modifier
                                 </button>
-                            </>
+                                <button
+                                    className={styles.btns__delete}
+                                    onClick={handleDelete}
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
                         )}
                     </>
                 )}

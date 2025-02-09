@@ -90,7 +90,7 @@ export default function Home() {
                                 ""
                             )}`;
                         } else if (item.id.startsWith("idea-")) {
-                            link = `/ideas.${item.id.replace("idea-", "")}`;
+                            link = `/ideas/${item.id.replace("idea-", "")}`;
                         }
 
                         return (

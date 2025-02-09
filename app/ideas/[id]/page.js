@@ -15,13 +15,13 @@ const IdeaPage = () => {
 
     const { fetchIdea, idea } = ideaStore();
 
-    const description = `###### Et
-Et nam deleniti. Reprehenderit voluptas quo. Qui dolorem ipsa.
+    //     const description = `###### Et
+    // Et nam deleniti. Reprehenderit voluptas quo. Qui dolorem ipsa.
 
-veritatis  | numquam | molestias
----- | ---- | ----
-sapiente | rerum | ut
-beatae | eligendi | neque`;
+    // veritatis  | numquam | molestias
+    // ---- | ---- | ----
+    // sapiente | rerum | ut
+    // beatae | eligendi | neque`;
 
     useEffect(() => {
         fetchIdea(params.id);
@@ -48,9 +48,8 @@ beatae | eligendi | neque`;
             </section>
             <section className={styles.idea__content}>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {description}
+                    {idea.description}
                 </ReactMarkdown>
-                ;
             </section>
         </main>
     );

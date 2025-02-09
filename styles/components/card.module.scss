@@ -24,8 +24,23 @@
         flex-direction: column;
         gap: 0.5rem;
     }
-    &__tag {
+    &__paragraph {
         color: vars.$tag__color;
         text-transform: uppercase;
+        display: -webkit-box;
+        line-clamp: 3;
+        -webkit-line-clamp: 3; /* Limite à 3 lignes */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.btns {
+    display: flex;
+    gap: 1em;
+    &__modify,
+    &__delete {
+        padding: 1em 2em;
     }
 }

@@ -8,7 +8,7 @@ import Profile from "@/container/profile";
 import Projects from "@/container/projects";
 
 export default function Portfolio() {
-    const { portfolio, loading, error, fetchUser } = userStore();
+    const { user, portfolio, loading, error, fetchUser } = userStore();
     useEffect(() => {
         fetchUser();
     }, []);
@@ -17,8 +17,8 @@ export default function Portfolio() {
 
     return (
         <main className={styles.portfolio}>
-            <Profile portfolio={portfolio} />
-            <Projects projects={portfolio?.projects} />
+            <Profile portfolio={portfolio} user={user} />
+            <Projects projects={portfolio?.projects} user={user} />
         </main>
     );
 }

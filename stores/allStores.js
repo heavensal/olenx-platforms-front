@@ -25,6 +25,7 @@ const allStore = create((set) => ({
             }
 
             const data = await response.json();
+
             set((state) => {
                 const portfolios = data.map((item) => ({
                     ...item,
