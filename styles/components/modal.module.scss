@@ -42,11 +42,13 @@
     }
     &__save,
     &__create {
-        background: vars.$text-white;
+        background: vars.$text-hover;
         color: vars.$text-black;
+        border: 1px solid;
         &:hover {
-            background: vars.$green--sucess;
-            color: vars.$text-white;
+            background: transparent;
+            color: vars.$text-hover;
+            border: 1px solid vars.$text-hover;
         }
     }
     &__create {

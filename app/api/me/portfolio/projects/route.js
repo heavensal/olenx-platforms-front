@@ -51,7 +51,6 @@ export async function GET(req) {
 export async function POST(req) {
     try {
         const body = await req.json();
-        console.log("Données envoyées :", body);
 
         // Vérifier si l'authentification est fournie
         const authHeader = req.headers.get("Authorization");
@@ -75,11 +74,8 @@ export async function POST(req) {
             }
         );
 
-        console.log("Statut de la réponse :", response.status);
-
         // Vérifier si le serveur renvoie une réponse vide
         const responseText = await response.text();
-        console.log("Réponse brute du serveur :", responseText);
 
         const data = responseText ? JSON.parse(responseText) : null;
 

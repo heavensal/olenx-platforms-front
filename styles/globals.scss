@@ -41,6 +41,14 @@ h3 {
         border: 1px solid vars.$text-white;
     }
 }
+#cta__orange {
+    background: vars.$text-hover;
+    border: 1px solid vars.$text-hover;
+    &:hover {
+        background: transparent;
+        color: vars.$text-hover;
+    }
+}
 @media (prefers-color-scheme: dark) {
     body {
         background: vars.$bg--dark;
