@@ -19,7 +19,7 @@ const PortfolioPage = ({ id }) => {
 
     return (
         <main className={styles.portfolio}>
-            <Profile portfolio={portfolio && portfolio} />
+            <Profile portfolio={portfolio && portfolio} page="portfolio" />
             <section className={styles.project}>
                 <ul className={styles.project__list}>
                     {portfolio?.projects.map((project) => (
@@ -27,7 +27,7 @@ const PortfolioPage = ({ id }) => {
                             className={styles.product__list__item}
                             key={project.id}
                         >
-                            <Card card={project} page={"me"} />
+                            <Card card={project} page={""} />
                         </li>
                     ))}
                 </ul>

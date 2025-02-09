@@ -1,9 +1,9 @@
 export async function GET() {
     const response = await fetch(
-        "https://olenx-platforms-api.onrender.com/api/v1/projects",
+        "https://olenx-platforms-api.onrender.com/api/v1/projects/",
         {
             headers: {
-                Authorization: "Bearer VOTRE_TOKEN", // Ajoute un token si nécessaire
+                // Ajoute un token si nécessaire
                 "Content-Type": "application/json",
             },
             cache: "no-store", // Évite la mise en cache

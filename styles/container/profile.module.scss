@@ -20,7 +20,7 @@
     }
     &__text {
         display: flex;
-        max-width: 80%;
+        max-width: 90%;
         flex-direction: column;
         gap: 1em;
     }
@@ -62,65 +62,12 @@
     }
 }
 
-.modal {
-    height: 50dvh;
-    border: none;
-    width: 97%;
-    padding: 4em 1em;
-    @include mixins.border-radius(24px);
-    &__close {
-        text-align: right;
-    }
-    &__title {
-        margin-bottom: 1.3rem;
-        display: flex;
-    }
-    &__content {
-        height: 100%;
-        display: grid;
-        grid-template-rows: 20% 80%;
-    }
-}
-
-.modal__form {
-    display: grid;
-    grid-template-rows: 20% 70% 10%;
+.edit {
+    display: flex;
     gap: 1em;
+    align-items: center;
+    justify-content: center;
     &__btns {
-        display: flex;
-        align-items: center;
-        gap: 1em;
-    }
-    &__save,
-    &__cancel {
-        @include mixins.border-radius(20px);
-
-        color: white;
-        padding: 1em 2em;
-    }
-    &__save {
-        background: vars.$green--sucess;
-    }
-    &__cancel {
-        background: vars.$red--danger;
-    }
-    &__input,
-    &__textarea {
-        @include mixins.border-radius(8px);
-    }
-    &__input {
-        padding: 1em 0.5em;
-        font-weight: bold;
-        font-size: 2em;
-        width: 100%;
-    }
-    &__textarea {
-        border: 1px solid vars.$border__input;
-        padding: 1em;
-        font-family: "Plus Jakarta Sans", serif;
-        font-size: 1rem;
-        &:focus {
-            outline: none;
-        }
+        @include mixins.flex__center;
     }
 }

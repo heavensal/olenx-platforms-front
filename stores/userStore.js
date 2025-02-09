@@ -32,7 +32,7 @@ const userStore = create((set, get) => ({
             const data = await response.json();
 
             set({
-                user: data.user,
+                user: data.portfolio.user,
                 portfolio: data.portfolio,
                 projects: data.portfolio.projects,
                 ideas: data.portfolio.ideas,
@@ -50,93 +50,6 @@ const userStore = create((set, get) => ({
 
     // Fonction pour mettre à jour le portfolio
 
-    // updatePortfolio: async (updatedData) => {
-    //     set({ loading: true, error: null });
-
-    //     try {
-    //         const token = localStorage.getItem("token");
-    //         if (!token)
-    //             throw new Error("Aucun token trouvé, veuillez vous connecter.");
-
-    //         // Créer l'objet avec les données mises à jour
-    //         const updatedPortfolio = {
-    //             company_name: updatedData.company_name,
-    //             description: updatedData.description,
-    //         };
-
-    //         // Effectuer la requête PATCH pour mettre à jour le portfolio
-    //         const response = await fetch("/api/me/portfolio", {
-    //             method: "PATCH",
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Content-Type": "application/json", // Envoi des données sous forme de JSON
-    //             },
-    //             body: JSON.stringify(updatedPortfolio), // Envoi des données mises à jour en JSON
-    //         });
-
-    //         const data = await response.json();
-
-    //         if (!response.ok) {
-    //             throw new Error(
-    //                 data.error || "Erreur lors de la mise à jour du portfolio"
-    //             );
-    //         }
-
-    //         // Mettre à jour le state du store après la réponse réussie
-    //         await get().fetchUser();
-
-    //         return { success: true, message: "Mise à jour réussie !" };
-    //     } catch (error) {
-    //         set({ error: error.message, loading: false });
-    //         return { success: false, message: error.message };
-    //     }
-    // },
-
-    // updatePortfolio: async (updatedData) => {
-    //     set({ loading: true, error: null });
-
-    //     try {
-    //         const token = localStorage.getItem("token");
-    //         if (!token)
-    //             throw new Error("Aucun token trouvé, veuillez vous connecter.");
-
-    //         const formData = new FormData();
-
-    //         formData.append("company_name", updatedData.get("company_name"));
-    //         formData.append("description", updatedData.get("description"));
-
-    //         // Ajouter l'image si elle existe
-    //         if (updatedData.get("avatar")) {
-    //             formData.append("avatar", updatedData.get("avatar"));
-    //         }
-
-    //         const response = await fetch(
-    //             "https://olenx-platforms-api.onrender.com/api/v1/me/portfolio.json",
-    //             {
-    //                 method: "PATCH",
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`,
-    //                 },
-    //                 body: formData, // Utilise FormData ici
-    //             }
-    //         );
-
-    //         const data = await response.json();
-
-    //         if (!response.ok) {
-    //             throw new Error(
-    //                 data.error || "Erreur lors de la mise à jour du portfolio"
-    //             );
-    //         }
-
-    //         await get().fetchUser();
-
-    //         return { success: true, message: "Mise à jour réussie !" };
-    //     } catch (error) {
-    //         set({ error: error.message, loading: false });
-    //         return { success: false, message: error.message };
-    //     }
-    // },
     updatePortfolio: async (updatedData) => {
         set({ loading: true, error: null });
 
@@ -145,31 +58,21 @@ const userStore = create((set, get) => ({
             if (!token)
                 throw new Error("Aucun token trouvé, veuillez vous connecter.");
 
-            const formData = new FormData();
+            // Créer l'objet avec les données mises à jour
+            const updatedPortfolio = {
+                company_name: updatedData.company_name,
+                description: updatedData.description,
+            };
 
-            // Ajouter l'ID du portfolio dans formData
-            formData.append("id", updatedData.get("id")); // Ajoute l'ID ici
-
-            // Ajouter les données de mise à jour
-            formData.append("company_name", updatedData.get("company_name"));
-            formData.append("description", updatedData.get("description"));
-
-            // Ajouter l'image si elle existe
-            if (updatedData.get("avatar")) {
-                formData.append("avatar", updatedData.get("avatar"));
-            }
-            console.log(formData);
-
-            const response = await fetch(
-                `https://olenx-platforms-api.onrender.com/api/v1/me/portfolio/`, // Pas besoin d'ajouter l'ID dans l'URL
-                {
-                    method: "PATCH",
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: formData, // Utilisation de FormData
-                }
-            );
+            // Effectuer la requête PATCH pour mettre à jour le portfolio
+            const response = await fetch("/api/me/portfolio", {
+                method: "PATCH",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json", // Envoi des données sous forme de JSON
+                },
+                body: JSON.stringify(updatedPortfolio), // Envoi des données mises à jour en JSON
+            });
 
             const data = await response.json();
 
@@ -179,7 +82,8 @@ const userStore = create((set, get) => ({
                 );
             }
 
-            await get().fetchUser(); // Récupérer à nouveau les données de l'utilisateur après la mise à jour
+            // Mettre à jour le state du store après la réponse réussie
+            await get().fetchUser();
 
             return { success: true, message: "Mise à jour réussie !" };
         } catch (error) {
@@ -187,6 +91,8 @@ const userStore = create((set, get) => ({
             return { success: false, message: error.message };
         }
     },
+
+    //         // Ajouter l'image si elle existe
 
     // Fonction pour récupérerer les projets
     fetchProjects: async () => {

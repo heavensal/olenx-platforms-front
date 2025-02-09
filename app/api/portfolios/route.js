@@ -3,7 +3,7 @@ export async function GET() {
         "https://olenx-platforms-api.onrender.com/api/v1/portfolios/",
         {
             headers: {
-                Authorization: "Bearer VOTRE_TOKEN", // Ajoute un token si nécessaire
+                // Ajoute un token si nécessaire
                 "Content-Type": "application/json",
             },
             cache: "no-store", // Évite la mise en cache
