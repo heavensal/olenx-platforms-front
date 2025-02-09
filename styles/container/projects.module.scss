@@ -1,0 +1,22 @@
+.project {
+    padding: 50px 20px;
+    &__add {
+        width: 100%;
+        height: 300px;
+        @include mixins.border-radius(24px);
+        @include mixins.flex__center__c;
+        gap: 2em;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid white;
+    }
+}
+
+@media (min-width: 768px) {
+    .project {
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2em;
+        }
+    }
+}

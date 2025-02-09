@@ -18,7 +18,7 @@ export default function Portfolio() {
     return (
         <main className={styles.portfolio}>
             <Profile portfolio={portfolio} user={user} />
-            <Projects projects={portfolio?.projects} user={user} />
+            <Projects />
         </main>
     );
 }

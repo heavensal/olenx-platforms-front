@@ -145,3 +145,7 @@ input {
     all: unset;
     box-sizing: border-box; /* Pour gérer les bordures correctement */
 }
+
+textarea {
+    resize: none;
+}

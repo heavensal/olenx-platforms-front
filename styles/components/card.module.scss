@@ -8,9 +8,12 @@
         margin-bottom: 1em;
         display: flex;
         flex-direction: column;
+        background: vars.$tag__color;
+        height: 300px;
+        width: 100%;
+        position: relative;
         & img {
             width: 100%;
-
             object-fit: cover; /* l'image remplit tout le conteneur */
             object-position: center;
             transition: all 0.4s ease-in-out;
@@ -42,5 +45,18 @@
     &__modify,
     &__delete {
         padding: 1em 2em;
+    }
+}
+
+.edit__btns {
+    position: absolute;
+    left: 80%;
+    display: flex;
+    gap: 0.5em;
+    padding: 1em 0;
+}
+@media (min-width: 768px) {
+    .edit__btns {
+        left: 76%;
     }
 }

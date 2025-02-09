@@ -1,27 +1,25 @@
 "use client";
-import styles from "@/styles/pages/portfolio.module.scss";
+import styles from "@/styles/container/projects.module.scss";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import userStore from "@/stores/userStore";
 import Card from "@/components/Card";
-
+import CreateProjectForm from "@/components/Modal/createProjectForm";
+import Modal from "@/components/Modal";
+import { FaPlusCircle } from "react-icons/fa";
 const Projects = () => {
     useEffect(() => {
         fetchProjects();
     }, []);
 
-    const [newProject, setNewProject] = useState({
-        title: "",
-        description: "",
-    });
-
-    const { createProject, projects, fetchProjects } = userStore();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await createProject(newProject);
-        setNewProject({ title: "", description: "" });
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = () => {
+        setIsModalOpen(true);
     };
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+    const { projects, fetchProjects } = userStore();
 
     return (
         <section className={styles.project}>
@@ -36,30 +34,18 @@ const Projects = () => {
                             <Card card={project} page={"me"} />
                         </li>
                     ))}
+                <li className={styles.project__add} onClick={openModal}>
+                    <h3>Créer un nouveau projet</h3>
+                    <FaPlusCircle size={40} />
+                </li>
             </ul>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="title"
-                    placeholder="Titre"
-                    value={newProject.title}
-                    onChange={(e) =>
-                        setNewProject({ ...newProject, title: e.target.value })
-                    }
-                />
-                <textarea
-                    name="description"
-                    placeholder="Description"
-                    value={newProject.description}
-                    onChange={(e) =>
-                        setNewProject({
-                            ...newProject,
-                            description: e.target.value,
-                        })
-                    }
-                />
-                <button type="submit">Créer le projet</button>
-            </form>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                title={"Créer un nouveau projet"}
+            >
+                <CreateProjectForm onCancel={closeModal}></CreateProjectForm>
+            </Modal>
         </section>
     );
 };

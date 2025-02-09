@@ -27,7 +27,7 @@ const PortfolioPage = ({ id }) => {
                             className={styles.product__list__item}
                             key={project.id}
                         >
-                            <Card card={project} page={"me"} />
+                            <Card card={project} page={""} />
                         </li>
                     ))}
                 </ul>
