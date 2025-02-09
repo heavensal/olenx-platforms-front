@@ -2,7 +2,7 @@
     padding: 50px 20px;
     display: grid;
     grid-template-rows: 90% 10%;
-    align-items: center;
+
     border-bottom: 2px solid vars.$tag__color;
     &__code {
         padding: 1em;
@@ -15,8 +15,6 @@
     &__infos {
         display: grid;
         grid-template-columns: 80% 20%;
-
-        align-items: center;
     }
     &__text {
         display: flex;
@@ -65,9 +63,4 @@
 .edit {
     display: flex;
     gap: 1em;
-    align-items: center;
-    justify-content: center;
-    &__btns {
-        @include mixins.flex__center;
-    }
 }

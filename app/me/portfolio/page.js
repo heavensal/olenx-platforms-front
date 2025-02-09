@@ -6,7 +6,7 @@ import Image from "next/image";
 import Card from "@/components/Card";
 import Profile from "@/container/profile";
 import Projects from "@/container/projects";
-
+import Ideas from "@/container/ideas";
 export default function Portfolio() {
     const { user, portfolio, loading, error, fetchUser } = userStore();
     useEffect(() => {
@@ -19,6 +19,7 @@ export default function Portfolio() {
         <main className={styles.portfolio}>
             <Profile portfolio={portfolio} user={user} />
             <Projects />
+            <Ideas></Ideas>
         </main>
     );
 }

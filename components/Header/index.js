@@ -7,11 +7,13 @@ import { useMediaQuery } from "react-responsive";
 import { IoIosContrast } from "react-icons/io";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { useEffect, useRef } from "react";
+import userStore from "@/stores/userStore";
 
 const Header = () => {
     const isMobile = useMediaQuery({ maxWidth: 767 });
     const options = ["Tous", "Freelance", "Projet"];
     const detailsRef = useRef(null);
+    const { user } = userStore();
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
@@ -67,12 +69,22 @@ const Header = () => {
                             </li>
                         </ul>
                     </details>
-                    <Link
-                        className={`${styles.menu__list__item} cta`}
-                        href={"/inscription"}
-                    >
-                        Nous rejoindre
-                    </Link>
+                    {user ? (
+                        <Link
+                            id="cta__orange"
+                            className={`cta cta__orange`}
+                            href={"/me/portfolio"}
+                        >
+                            Mon portfolio
+                        </Link>
+                    ) : (
+                        <Link
+                            className={`${styles.menu__list__item} cta`}
+                            href={"/inscription"}
+                        >
+                            Nous rejoindre
+                        </Link>
+                    )}
                 </div>
             )}
         </header>

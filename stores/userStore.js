@@ -49,7 +49,6 @@ const userStore = create((set, get) => ({
     },
 
     // Fonction pour mettre à jour le portfolio
-
     updatePortfolio: async (updatedData) => {
         set({ loading: true, error: null });
 
@@ -91,8 +90,6 @@ const userStore = create((set, get) => ({
             return { success: false, message: error.message };
         }
     },
-
-    //         // Ajouter l'image si elle existe
 
     // Fonction pour récupérerer les projets
     fetchProjects: async () => {
@@ -224,6 +221,129 @@ const userStore = create((set, get) => ({
         }
     },
 
+    // Fonction pour récupérerer les idées
+    fetchIdeas: async () => {
+        try {
+            const token = localStorage.getItem("token"); // <-- Ajout de la récupération du token
+            if (!token)
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
+            const res = await fetch("/api/me/portfolio/ideas", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`, // <-- Corrigé ici
+                    "Content-Type": "application/json",
+                },
+            });
+            if (!res.ok) throw new Error(`Erreur HTTP: ${res.status}`);
+
+            const data = await res.json();
+            set({ ideas: data });
+        } catch (error) {
+            console.error("Erreur lors de la récupération des projets:", error);
+            set({ error: error.message });
+        }
+    },
+
+    // Fonction pour créer une idée
+    createIdea: async (ideaData) => {
+        try {
+            const token = localStorage.getItem("token");
+            if (!token)
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
+
+            const response = await fetch("/api/me/portfolio/ideas", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`, // <-- Corrigé ici
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(ideaData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Recharge directement les projets après la création
+                await get().fetchIdeas();
+            } else {
+                console.error(
+                    "Erreur lors de la création du projet:",
+                    data.error
+                );
+            }
+        } catch (error) {
+            console.error("Erreur réseau:", error);
+        }
+    },
+
+    // Fonction pour supprimer un projet existant
+    deleteIdea: async (ideaId) => {
+        try {
+            const token = localStorage.getItem("token");
+            if (!token)
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
+
+            const response = await fetch(`/api/me/portfolio/ideas/${ideaId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(
+                    `Erreur HTTP: ${response.status} - ${
+                        errorData.message || errorData.error || "Inconnue"
+                    }`
+                );
+            }
+
+            // Mettre à jour directement l'état en supprimant le projet localement
+            set((state) => ({
+                ideas: state.ideas.filter((idea) => idea.id !== ideaId),
+            }));
+        } catch (error) {
+            console.error("Erreur réseau ou API:", error.message);
+        }
+    },
+
+    // Fonction pour mettre à jour un projet existant
+    updateIdea: async (ideaId, updatedIdeaData) => {
+        try {
+            const token = localStorage.getItem("token");
+            if (!token)
+                throw new Error("Aucun token trouvé, veuillez vous connecter.");
+
+            const response = await fetch(`/api/me/portfolio/ideas/${ideaId}`, {
+                method: "PATCH", // On utilise PATCH pour une mise à jour partielle
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedIdeaData), // Les données mises à jour du projet
+            });
+
+            // Vérification du statut HTTP avant de parser la réponse
+            if (!response.ok) {
+                // Si la réponse n'est pas ok, on lève une erreur avec le statut et le message
+                const errorData = await response.json();
+                throw new Error(
+                    `Erreur HTTP: ${response.status} - ${
+                        errorData.message || errorData.error || "Inconnue"
+                    }`
+                );
+            }
+
+            // Si la mise à jour est réussie, on recharge les projets
+            if (response.ok) {
+                await get().fetchIdeas(); // Recharge les projets après la mise à jour
+            }
+        } catch (error) {
+            console.error("Erreur réseau ou API:", error.message);
+        }
+    },
     // Fonction pour déconnecter l'utilisateur
     logout: () => {
         localStorage.removeItem("token"); // Suppression du token

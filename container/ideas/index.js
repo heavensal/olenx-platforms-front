@@ -4,12 +4,13 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import userStore from "@/stores/userStore";
 import Card from "@/components/Card";
-import CreateProjectForm from "@/components/Modal/createProjectForm";
+import CreateIdeaForm from "@/components/Modal/createIdeaForm";
 import Modal from "@/components/Modal";
 import { FaPlusCircle } from "react-icons/fa";
-const Projects = () => {
+const Ideas = () => {
+    const { ideas, fetchIdeas } = userStore();
     useEffect(() => {
-        fetchProjects();
+        fetchIdeas();
     }, []);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,36 +20,35 @@ const Projects = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-    const { projects, fetchProjects } = userStore();
 
     return (
         <section className={styles.project}>
-            <h2 className={styles.project__title}>Projets</h2>
+            <h2 className={styles.project}>Idées</h2>
             <ul className={styles.project__list}>
-                {projects
+                {ideas
                     ?.sort((a, b) => a.id - b.id)
-                    .map((project) => (
+                    .map((idea) => (
                         <li
                             className={styles.product__list__item}
-                            key={project?.id}
+                            key={idea?.id}
                         >
-                            <Card card={project} page={"me"} />
+                            <Card card={idea} page={"me"} />
                         </li>
                     ))}
                 <li className={styles.project__add} onClick={openModal}>
-                    <h3>Créer un nouveau projet</h3>
+                    <h3>Ajoutez une nouvelle idée</h3>
                     <FaPlusCircle size={40} />
                 </li>
             </ul>
             <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
-                title={"Créer un nouveau projet"}
+                title={"Ajoutez une nouvelle idée"}
             >
-                <CreateProjectForm onCancel={closeModal}></CreateProjectForm>
+                <CreateIdeaForm onCancel={closeModal}></CreateIdeaForm>
             </Modal>
         </section>
     );
 };
 
-export default Projects;
+export default Ideas;

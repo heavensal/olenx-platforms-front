@@ -3,24 +3,25 @@ import { useState, useEffect } from "react";
 import styles from "@/styles/components/modal.module.scss";
 import userStore from "@/stores/userStore";
 
-const CreateProjectForm = ({ onCancel }) => {
-    const [newProject, setNewProject] = useState({
+const CreateIdeaForm = ({ onCancel }) => {
+    const [newIdea, setNewIdea] = useState({
         title: "",
         description: "",
     });
 
-    const { createProject } = userStore();
+    const { createIdea } = userStore();
 
-    // Mettre à jour updatedProject quand la prop project change
+    // Mettre à jour updatedIdea quand la prop Idea change
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setNewProject((prev) => ({ ...prev, [name]: value }));
+        setNewIdea((prev) => ({ ...prev, [name]: value }));
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await createProject(newProject);
-        setNewProject({ title: "", description: "" });
+        await createIdea(newIdea);
+        setNewIdea({ title: "", description: "" });
+        onCancel;
     };
     return (
         <form onSubmit={handleSubmit} className={styles.modal__form}>
@@ -28,26 +29,22 @@ const CreateProjectForm = ({ onCancel }) => {
                 type="text"
                 name="title"
                 placeholder="Titre"
-                value={newProject.title}
+                value={newIdea.title}
                 onChange={handleChange}
                 className={styles.modal__form__input}
             />
             <textarea
                 name="description"
                 placeholder="Description"
-                value={newProject.description}
+                value={newIdea.description}
                 onChange={handleChange}
                 className={styles.modal__form__textarea}
             />
-            <button
-                type="submit"
-                className={styles.modal__form__create}
-                onClick={onCancel}
-            >
+            <button type="submit" className={styles.modal__form__create}>
                 Créer le projet
             </button>
         </form>
     );
 };
 
-export default CreateProjectForm;
+export default CreateIdeaForm;

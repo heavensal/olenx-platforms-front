@@ -20,6 +20,7 @@ const ProfileForm = ({ portfolio, onCancel }) => {
         e.preventDefault();
 
         await updatePortfolio(formData);
+        onCancel;
     };
 
     return (
