@@ -8,7 +8,7 @@ import Profile from "@/container/profile";
 import Projects from "@/container/projects";
 import Ideas from "@/container/ideas";
 export default function Portfolio() {
-    const { user, portfolio, loading, error, fetchUser } = userStore();
+    const { user, portfolio, loading, error, fetchUser, logout } = userStore();
     useEffect(() => {
         fetchUser();
     }, []);
@@ -17,6 +17,7 @@ export default function Portfolio() {
 
     return (
         <main className={styles.portfolio}>
+            <button onClick={logout}>Disconnect</button>
             <Profile portfolio={portfolio} user={user} />
             <Projects />
             <Ideas></Ideas>
