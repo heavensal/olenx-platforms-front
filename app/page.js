@@ -28,6 +28,7 @@ export default function Home() {
 
     const handleClick = (option) => {
         setActive(option);
+        console.log("je clique");
     };
 
     // Filtrage des données en fonction de l'option active
