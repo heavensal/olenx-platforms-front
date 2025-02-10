@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 const ConfirmationPage = () => {
     const router = useRouter();
     const { confirmation_token } = router.query;
+    console.log(router.query, "je suis grooot");
 
     // Logique de confirmation avec confirmation_token
     if (!confirmation_token) {
