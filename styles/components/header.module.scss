@@ -12,13 +12,15 @@
 
 .menu {
     display: flex;
+    flex-direction: column;
     gap: 1em;
-    align-items: center;
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100dvw;
+    background: vars.$bg__transparent;
+    border: 1px solid vars.$border__input;
+    @include mixins.border-radius(8px);
 }
 .cta__container {
     gap: 1em;

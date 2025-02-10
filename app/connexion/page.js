@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "@/styles/pages/connexion.module.scss";
 import Link from "next/link";
@@ -8,11 +8,28 @@ export default function Connexion() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [isRedirecting, setIsRedirecting] = useState(true); // État pour gérer la redirection
     const router = useRouter();
+
+    // Vérification du token dans localStorage
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            // Si un token est trouvé, redirige vers le portfolio
+            router.push("/me/portfolio");
+        } else {
+            // Si pas de token, continue le rendu de la page de connexion
+            setIsRedirecting(false);
+        }
+    }, [router]);
+
+    if (isRedirecting) {
+        // Retourne null pour éviter de rendre la page avant la redirection
+        return null;
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const response = await fetch("/api/users/sign_in", {
                 method: "POST",

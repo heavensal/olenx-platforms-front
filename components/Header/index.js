@@ -11,25 +11,8 @@ import userStore from "@/stores/userStore";
 
 const Header = () => {
     const isMobile = useMediaQuery({ maxWidth: 767 });
-    const options = ["Tous", "Freelance", "Projet"];
-    const detailsRef = useRef(null);
     const { user } = userStore();
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                detailsRef.current &&
-                !detailsRef.current.contains(event.target)
-            ) {
-                detailsRef.current.removeAttribute("open"); // Ferme le détail
-            }
-        };
-
-        document.addEventListener("click", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
+    useEffect(() => {}, []);
     return (
         <header className={styles.header}>
             <Link href={"/"}>
@@ -42,50 +25,80 @@ const Header = () => {
                 />
             </Link>
             {isMobile ? (
-                <HiMenuAlt3 size={30} className="hi" />
+                <details className={styles.details}>
+                    <summary className={styles.details__summary}>
+                        <HiMenuAlt3 size={40} className="hi" />
+                    </summary>
+                    <nav className={styles.menu}>
+                        <ul className={styles.menu__list}>
+                            <li className={styles.menu__list__item}>
+                                <Link href={"/"}>Accueil</Link>
+                            </li>
+                            <li className={styles.menu__list__item}>
+                                {" "}
+                                <Link
+                                    href={"https://www.olenx.com"}
+                                    target="__blank"
+                                >
+                                    Services
+                                </Link>
+                            </li>
+                            <div className={styles.cta__container}>
+                                {user ? (
+                                    <Link
+                                        id="cta__orange"
+                                        className={`cta cta__orange`}
+                                        href={"/me/portfolio"}
+                                    >
+                                        Mon portfolio
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        className={`${styles.menu__list__item} cta`}
+                                        href={"/inscription"}
+                                    >
+                                        Nous rejoindre
+                                    </Link>
+                                )}
+                            </div>
+                        </ul>
+                    </nav>
+                </details>
             ) : (
                 <nav className={styles.menu}>
                     <ul className={styles.menu__list}>
-                        <li className={styles.menu__list__item}>Services</li>
+                        <li className={styles.menu__list__item}>
+                            <Link href={"/"}>Accueil</Link>
+                        </li>
+                        <li className={styles.menu__list__item}>
+                            {" "}
+                            <Link
+                                href={"https://www.olenx.com"}
+                                target="__blank"
+                            >
+                                Services
+                            </Link>
+                        </li>
                     </ul>
+                    <div className={styles.cta__container}>
+                        {user ? (
+                            <Link
+                                id="cta__orange"
+                                className={`cta cta__orange`}
+                                href={"/me/portfolio"}
+                            >
+                                Mon portfolio
+                            </Link>
+                        ) : (
+                            <Link
+                                className={`${styles.menu__list__item} cta`}
+                                href={"/inscription"}
+                            >
+                                Nous rejoindre
+                            </Link>
+                        )}
+                    </div>
                 </nav>
-            )}
-            {!isMobile && (
-                <div className={styles.cta__container}>
-                    {/* <div className="dark">
-                        <IoIosContrast size={30} />
-                    </div> */}
-                    <details className={styles.details} ref={detailsRef}>
-                        <summary className={styles.details__summary}>
-                            <AiOutlineUserSwitch size={30} />
-                        </summary>
-                        <ul className={styles.details__list}>
-                            <li className={styles.details__list__item}>Tous</li>
-                            <li className={styles.details__list__item}>
-                                Freelance
-                            </li>
-                            <li className={styles.details__list__item}>
-                                Startup
-                            </li>
-                        </ul>
-                    </details>
-                    {user ? (
-                        <Link
-                            id="cta__orange"
-                            className={`cta cta__orange`}
-                            href={"/me/portfolio"}
-                        >
-                            Mon portfolio
-                        </Link>
-                    ) : (
-                        <Link
-                            className={`${styles.menu__list__item} cta`}
-                            href={"/inscription"}
-                        >
-                            Nous rejoindre
-                        </Link>
-                    )}
-                </div>
             )}
         </header>
     );

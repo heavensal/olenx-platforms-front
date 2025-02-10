@@ -1,0 +1,22 @@
+// /app/users/confirmation/page.js
+import { useRouter } from "next/router";
+
+const ConfirmationPage = () => {
+    const router = useRouter();
+    const { confirmation_token } = router.query;
+
+    // Logique de confirmation avec confirmation_token
+    if (!confirmation_token) {
+        return <p>Chargement...</p>; // Affiche un message de chargement en attendant le token
+    }
+
+    return (
+        <div>
+            <h1>Confirmation d'utilisateur</h1>
+            <p>Votre token de confirmation : {confirmation_token}</p>
+            {/* Ajoutez ici le traitement de la confirmation */}
+        </div>
+    );
+};
+
+export default ConfirmationPage;
