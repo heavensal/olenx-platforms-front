@@ -10,9 +10,12 @@ const Footer = () => {
                 <p className={styles.footer__paragraph}>
                     Vous avez un <strong>projet</strong> tête ?
                 </p>
-                <Link className={styles.footer__cta} href={"/"}>
+                <a
+                    className={styles.footer__cta}
+                    href={"mailto:team@olenx.com"}
+                >
                     Parlons-en <FaArrowRight />
-                </Link>
+                </a>
             </div>
             <div className={styles.footer__links}>
                 <p className={styles.footer__links__title}>Explore</p>
