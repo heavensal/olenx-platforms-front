@@ -6,6 +6,7 @@ import { MdEdit, MdDeleteForever } from "react-icons/md";
 import Modal from "@/components/Modal";
 import ProjectForm from "@/components/Modal/ProjectForm";
 import IdeaForm from "@/components/Modal/IdeaForm";
+import { CldImage } from "next-cloudinary";
 
 const Card = ({ card, page, formType }) => {
     const { user, deleteProject, deleteIdea } = userStore();
@@ -45,6 +46,12 @@ const Card = ({ card, page, formType }) => {
     return (
         <div className={styles.card}>
             <div className={styles.card__image}>
+                {/* <CldImage
+                    src={card?.avatar}
+                    width={200}
+                    height={200}
+                    alt={card?.avatar}
+                /> */}
                 {user && page == "me" ? (
                     <div className={styles.edit__btns}>
                         <MdEdit size={30} onClick={openModal} />
