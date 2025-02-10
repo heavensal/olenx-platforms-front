@@ -34,7 +34,7 @@ const Projects = () => {
                             className={styles.product__list__item}
                             key={project?.id}
                         >
-                            <Link href={`/projects/${project?.id}`}>
+                            <Link href={`/project/${project?.id}`}>
                                 <Card card={project} page={"me"} />
                             </Link>
                         </li>
