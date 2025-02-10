@@ -32,7 +32,9 @@ const Ideas = () => {
                             className={styles.product__list__item}
                             key={idea?.id}
                         >
-                            <Card card={idea} page={"me"} />
+                            <Link href={`/ideas/${idea?.id}`}>
+                                <Card card={idea} page={"me"} />
+                            </Link>
                         </li>
                     ))}
                 <li className={styles.project__add} onClick={openModal}>
