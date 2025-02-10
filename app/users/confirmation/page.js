@@ -1,4 +1,5 @@
 // /app/users/confirmation/page.js
+"use client";
 import { useRouter } from "next/router";
 
 const ConfirmationPage = () => {
