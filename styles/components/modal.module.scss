@@ -2,7 +2,7 @@
     height: 60dvh;
     border: none;
     width: 97%;
-
+    background: vars.$bg--dark;
     @include mixins.border-radius(24px);
     &__close {
         text-align: right;
@@ -42,8 +42,8 @@
     }
     &__save,
     &__create {
-        background: vars.$text-hover;
-        color: vars.$text-black;
+        background: vars.$bg--dark;
+        color: vars.$text-hover;
         border: 1px solid;
         &:hover {
             background: transparent;

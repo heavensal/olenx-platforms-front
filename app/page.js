@@ -86,12 +86,12 @@ export default function Home() {
                                 ""
                             )}`;
                         } else if (item.id.startsWith("project-")) {
-                            link = `/projects/${item.id.replace(
+                            link = `/project/${item.id.replace(
                                 "project-",
                                 ""
                             )}`;
                         } else if (item.id.startsWith("idea-")) {
-                            link = `/ideas/${item.id.replace("idea-", "")}`;
+                            link = `/idea/${item.id.replace("idea-", "")}`;
                         }
 
                         return (
