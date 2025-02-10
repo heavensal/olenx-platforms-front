@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Suspense } from "react";
 function ConfirmationContent() {
     const searchParams = useSearchParams();
-    const token = searchParams.get("token");
+    const token = searchParams.get("confirmation_token");
 
     return (
         <div>
