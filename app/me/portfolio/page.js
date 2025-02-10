@@ -18,7 +18,7 @@ export default function Portfolio() {
     useEffect(() => {
         fetchUser();
     }, [router]);
-    if (!user) router.push("/connexion");
+    // if (!user) router.push("/connexion");
     if (loading) return <p>Chargement en cours...</p>;
     if (error) return <p>Erreur : {error}</p>;
 

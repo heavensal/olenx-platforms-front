@@ -12,21 +12,21 @@ export default function Connexion() {
     const router = useRouter();
 
     // Vérification du token dans localStorage
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            // Si un token est trouvé, redirige vers le portfolio
-            router.push("/me/portfolio");
-        } else {
-            // Si pas de token, continue le rendu de la page de connexion
-            setIsRedirecting(false);
-        }
-    }, [router]);
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token");
+    //     if (token) {
+    //         // Si un token est trouvé, redirige vers le portfolio
+    //         router.push("/me/portfolio");
+    //     } else {
+    //         // Si pas de token, continue le rendu de la page de connexion
+    //         setIsRedirecting(false);
+    //     }
+    // }, [router]);
 
-    if (isRedirecting) {
-        // Retourne null pour éviter de rendre la page avant la redirection
-        return null;
-    }
+    // if (isRedirecting) {
+    //     // Retourne null pour éviter de rendre la page avant la redirection
+    //     return null;
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
