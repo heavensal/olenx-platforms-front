@@ -7,6 +7,8 @@ import Card from "@/components/Card";
 import CreateProjectForm from "@/components/Modal/createProjectForm";
 import Modal from "@/components/Modal";
 import { FaPlusCircle } from "react-icons/fa";
+import Link from "next/link";
+
 const Projects = () => {
     useEffect(() => {
         fetchProjects();

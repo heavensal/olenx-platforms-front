@@ -7,6 +7,8 @@ import Card from "@/components/Card";
 import CreateIdeaForm from "@/components/Modal/createIdeaForm";
 import Modal from "@/components/Modal";
 import { FaPlusCircle } from "react-icons/fa";
+import Link from "next/link";
+
 const Ideas = () => {
     const { ideas, fetchIdeas } = userStore();
     useEffect(() => {
