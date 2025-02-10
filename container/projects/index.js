@@ -10,6 +10,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import Link from "next/link";
 
 const Projects = () => {
+    const { projects, fetchProjects } = userStore();
     useEffect(() => {
         fetchProjects();
     }, []);
@@ -21,7 +22,6 @@ const Projects = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-    const { projects, fetchProjects } = userStore();
 
     return (
         <section className={styles.project}>
@@ -34,9 +34,11 @@ const Projects = () => {
                             className={styles.product__list__item}
                             key={project?.id}
                         >
-                            <Link href={`/project/${project?.id}`}>
-                                <Card card={project} page={"me"} />
-                            </Link>
+                            <Card
+                                formType={"project"}
+                                card={project}
+                                page={"me"}
+                            />
                         </li>
                     ))}
                 <li className={styles.project__add} onClick={openModal}>

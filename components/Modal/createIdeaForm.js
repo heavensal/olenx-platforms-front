@@ -40,8 +40,12 @@ const CreateIdeaForm = ({ onCancel }) => {
                 onChange={handleChange}
                 className={styles.modal__form__textarea}
             />
-            <button type="submit" className={styles.modal__form__create}>
-                Créer le projet
+            <button
+                type="submit"
+                className={styles.modal__form__create}
+                onClick={onCancel}
+            >
+                Ajouter l'idée
             </button>
         </form>
     );

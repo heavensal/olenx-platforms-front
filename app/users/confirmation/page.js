@@ -1,8 +1,10 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const ConfirmationPage = () => {
     const searchParams = useSearchParams();
+    const router = useRouter(); // Pour rediriger après la confirmation
     const confirmation_token = searchParams.get("confirmation_token");
     const [message, setMessage] = useState("Confirmation en cours...");
 
@@ -25,13 +27,15 @@ const ConfirmationPage = () => {
                 })
                 .then((data) => {
                     setMessage(data.message || "Confirmation réussie !");
+                    // Rediriger l'utilisateur après confirmation
+                    router.push("/connexion"); // Ou une autre page de ton choix
                 })
                 .catch((error) => {
                     console.error("Erreur :", error);
                     setMessage("Échec de la confirmation. Veuillez réessayer.");
                 });
         }
-    }, [confirmation_token]);
+    }, [confirmation_token, router]);
 
     return (
         <div>

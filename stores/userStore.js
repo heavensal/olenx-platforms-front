@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { create } from "zustand";
 
 const userStore = create((set, get) => ({
@@ -30,6 +31,7 @@ const userStore = create((set, get) => ({
                 throw new Error(`Erreur HTTP: ${response.status}`);
 
             const data = await response.json();
+            console.log(data, "données ");
 
             set({
                 user: data.portfolio.user,
@@ -47,6 +49,7 @@ const userStore = create((set, get) => ({
             set({ error: error.message, loading: false });
         }
     },
+    // Vérifie si un utilisateur est connecté
 
     // Fonction pour mettre à jour le portfolio
     updatePortfolio: async (updatedData) => {
@@ -348,6 +351,8 @@ const userStore = create((set, get) => ({
     logout: () => {
         localStorage.removeItem("token"); // Suppression du token
         set({ user: null, portfolio: null, error: null });
+        const router = useRouter();
+        router.push("/");
     },
 }));
 

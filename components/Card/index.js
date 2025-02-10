@@ -16,7 +16,6 @@ const Card = ({ card, page, formType }) => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-    console.log(card);
 
     if (!card) return null;
 

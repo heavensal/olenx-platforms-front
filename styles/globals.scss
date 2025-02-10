@@ -41,6 +41,9 @@ h3 {
         color: vars.$text-white;
         border: 1px solid vars.$text-white;
     }
+    &__logout__mobile {
+        width: max-content;
+    }
 }
 #cta__orange {
     background: vars.$text-hover;

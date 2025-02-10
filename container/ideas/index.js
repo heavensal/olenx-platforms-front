@@ -34,7 +34,7 @@ const Ideas = () => {
                             className={styles.product__list__item}
                             key={idea?.id}
                         >
-                            <Link href={`/ideas/${idea?.id}`}>
+                            <Link href={`/idea/${idea?.id}`}>
                                 <Card card={idea} page={"me"} />
                             </Link>
                         </li>
