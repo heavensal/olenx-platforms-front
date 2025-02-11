@@ -76,6 +76,7 @@ export async function PATCH(req) {
                 body: JSON.stringify({
                     company_name: body.company_name,
                     description: body.description,
+                    avatar: body.avatar,
                 }),
             }
         );
