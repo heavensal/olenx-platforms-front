@@ -10,6 +10,8 @@ import ProfileForm from "@/components/Modal/ProfileForm";
 
 const Profile = ({ portfolio, user }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    console.log(portfolio);
+
     const openModal = () => {
         setIsModalOpen(true);
     };

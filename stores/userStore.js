@@ -64,6 +64,7 @@ const userStore = create((set, get) => ({
             const updatedPortfolio = {
                 company_name: updatedData.company_name,
                 description: updatedData.description,
+                avatar: updatedData.avatar,
             };
 
             // Effectuer la requête PATCH pour mettre à jour le portfolio
@@ -92,6 +93,11 @@ const userStore = create((set, get) => ({
             set({ error: error.message, loading: false });
             return { success: false, message: error.message };
         }
+    },
+
+    //Changer la pp
+    updateAvatar: (secureUrl) => {
+        set({ avatar: secureUrl });
     },
 
     // Fonction pour récupérerer les projets
